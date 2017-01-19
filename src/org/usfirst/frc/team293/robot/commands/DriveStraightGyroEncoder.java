@@ -8,38 +8,39 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DriveTurnGyro extends Command {
-	double angle;
+public class DriveStraightGyroEncoder extends Command {
 	double speed;
-	double rate;
-	boolean status;
-    public DriveTurnGyro(double speed, double angle, double rate) {
+	double distance;
+    public DriveStraightGyroEncoder(double distances, double speeds) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.driveTrain); 	
+    	requires(Robot.driveTrain);
+    	distance=distances;
+    	speed=speeds;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.resetGyro();
-    	SmartDashboard.putString("CurrentCommand","DriveTurnGyro");
+    	Robot.driveTrain.resetEnc();
+    	SmartDashboard.putString("CurrentCommand","DriveStriaghtGyroEncoder");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	status=Robot.driveTrain.gyroTurn(speed, angle, rate);
+    	Robot.driveTrain.gyroStraight(speed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return status;
+    protected boolean isFinished() {  	
+    	return (distance<=Robot.driveTrain.readEnc()[0]);
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.driveTrain.tankdrive(0, 0);
+    	Robot.driveTrain.tankdrive(0,0);
     }
-    
+
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {

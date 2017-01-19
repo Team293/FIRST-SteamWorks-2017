@@ -4,6 +4,7 @@ import org.usfirst.frc.team293.robot.OI;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,6 +19,7 @@ public class DefaultTankDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putString("CurrentCommand","DefaultTank");
     }
 
     // Called repeatedly when this Command is scheduled to run

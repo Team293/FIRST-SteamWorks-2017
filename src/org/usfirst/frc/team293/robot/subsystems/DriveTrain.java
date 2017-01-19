@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.interfaces.Gyro;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -39,13 +40,13 @@ public class DriveTrain extends Subsystem {
 		rightMotor = new VictorSP(RobotMap.rightDrive);
 		drive = new RobotDrive(leftMotor, rightMotor);	
 		
-		leftEncoder= new Encoder(0,1);
-		rightEncoder= new Encoder(2,3);
-
-    	gyro=new ADXRS450_Gyro();
-
+		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.rightEncoder[1],true, EncodingType.k4X);	//creates encoder with fast sampling and true or false for direction
+		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.leftEncoder[1],false, EncodingType.k4X);
+		
+		leftEncoder.setDistancePerPulse(150);//the amount of ticks to ft...still have to find this from P
+    	gyro=new ADXRS450_Gyro();		//`	
 	}
-
+ 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         setDefaultCommand(new DefaultTankDrive());
@@ -85,9 +86,30 @@ public class DriveTrain extends Subsystem {
         return turning;
     }
     
+    public boolean gyroTurnInPlace(double angle, double rate){
+    	angle=gyro.getAngle()-offsetGyro; ///Gets the angle and subtracts initial angle
+    	setpoint+=rate;  //adds the rate into the setpoint to gradually change it
+    	error=(angle-setpoint); //finds how far you are off from the setpoint
+        
+        finalPower=(error*pValue);
+        drive.tankDrive(-finalPower,finalPower);
+        if (Math.abs(setpoint)>=Math.abs(angle)){
+        	turning=true;
+        }
+        
+        return turning;
+    }
+    
 	public void resetEnc(){
 		leftEncoder.reset();
 		rightEncoder.reset();
+	}
+	
+	public double[] readEnc(){
+		double leftDistance= leftEncoder.getDistance();
+		double rightDistance=rightEncoder.getDistance();
+		double[] encoders= {(leftDistance+rightDistance)/2,leftDistance, rightDistance};
+		return encoders;
 	}
 
 }
