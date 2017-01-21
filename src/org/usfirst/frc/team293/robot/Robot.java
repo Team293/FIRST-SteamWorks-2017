@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
+import org.usfirst.frc.team293.robot.subsystems.Camera;
 import org.usfirst.frc.team293.robot.subsystems.DriveTrain;
 
 import autonomi.StraightTurnRightGear_GyroEncoder;
@@ -22,6 +24,7 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
+	public static Camera Camera;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -32,6 +35,7 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
+		Camera = new Camera();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new StraightTurnRightGear_GyroEncoder());
 //        chooser.addObject("My Auto", new MyAutoCommand());
@@ -62,7 +66,7 @@ public class Robot extends IterativeRobot {
 	 */
     public void autonomousInit() {
         autonomousCommand = (Command) chooser.getSelected();
-        
+       
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":

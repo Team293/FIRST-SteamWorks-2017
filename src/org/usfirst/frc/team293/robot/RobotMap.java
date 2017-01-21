@@ -34,6 +34,8 @@ public class RobotMap {
 		
 		public static int   climberPot=0;  //analog to read voltage
 		
+		public static final int visionServoPin = 8;
+		
 						  
 		
 							
