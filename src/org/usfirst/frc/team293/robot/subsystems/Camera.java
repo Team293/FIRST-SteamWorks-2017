@@ -91,10 +91,11 @@ public class Camera extends Subsystem {
    				return false;												//if can't see goal, return -1
    			}
     		getGoals(markers);
-    		for(Point i : goals){
+    		/*for(Point i : goals){
     			System.out.print(i.y);
     			System.out.print(", ");
-    		}
+    		}*/
+    		System.out.println(getDist());
     		System.out.println();
     		return true;													//if can see goal, return 1
     	}
@@ -186,6 +187,10 @@ public class Camera extends Subsystem {
     	SmartDashboard.putBoolean("RobotCanSeeGoal", foundGoal);
     	return foundGoal;
     }
+	
+	public double getDist(){
+		return 2945.7*Math.pow(myGoal.y,-1.032);
+	}
 
 	@Override
 	protected void initDefaultCommand() {
