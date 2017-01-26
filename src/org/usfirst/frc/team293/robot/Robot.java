@@ -4,10 +4,13 @@ package org.usfirst.frc.team293.robot;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team293.robot.subsystems.Camera;
 import org.usfirst.frc.team293.robot.subsystems.DriveTrain;
+import org.usfirst.frc.team293.robot.subsystems.continuousFunctions;
+import org.usfirst.frc.team293.robot.subsystems.GearPouch;
 
 import autonomi.StraightTurnRightGear_GyroEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -25,6 +28,8 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 	public static Camera Camera;
+	public static continuousFunctions ContinuousFunctions;
+	public static GearPouch GearPouch;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -36,6 +41,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
 		Camera = new Camera();
+		ContinuousFunctions = new continuousFunctions();
+		GearPouch = new GearPouch();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new StraightTurnRightGear_GyroEncoder());
 //        chooser.addObject("My Auto", new MyAutoCommand());

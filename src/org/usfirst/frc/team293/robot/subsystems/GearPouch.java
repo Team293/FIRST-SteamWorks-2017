@@ -15,19 +15,22 @@ public class GearPouch extends Subsystem {
 	
 	
 	// SENSORS FOR THE TWO BANNERS AND A IF WE HAVE A GEAR SENSOR.
-	/*DigitalInput leftBanner;
+	DigitalInput leftBanner;
 	DigitalInput rightBanner;
-	DigitalInput hasGearButton;*/
+	DigitalInput hasGearButton;
+	
+	public GearPouch(){
+		leftBanner = new DigitalInput(RobotMap.LEFT_BANNER_PIN);
+    	rightBanner = new DigitalInput(RobotMap.RIGHT_BANNER_PIN);
+    	hasGearButton = new DigitalInput(RobotMap.HAS_GEAR_BUTTON_PIN);
+	}
 	
     public void initDefaultCommand() {
-    	/*leftBanner = new DigitalInput(RobotMap.LEFT_BANNER_PIN);
-    	rightBanner = new DigitalInput(RobotMap.RIGHT_BANNER_PIN);
-    	hasGearButton = new DigitalInput(RobotMap.HAS_GEAR_BUTTON_PIN);*/
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    /*public int isAligned(){
+    public int isAligned(){
     	if(leftBanner.get() && rightBanner.get()){
     		return 1;
     	}
@@ -42,6 +45,6 @@ public class GearPouch extends Subsystem {
     
     public boolean hasGear(){
     	return hasGearButton.get();
-    }*/
+    }
 }
 

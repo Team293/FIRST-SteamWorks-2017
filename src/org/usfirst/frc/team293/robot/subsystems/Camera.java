@@ -164,7 +164,7 @@ public class Camera extends Subsystem {
     		cameraServo.set(servoAngle);											//Set Servos
     		//System.out.println("ServoAngle: " + servoAngle);
     	}
-    	SmartDashboard.putNumber("x Servo",servoAngle);
+    	//SmartDashboard.putNumber("x Servo",servoAngle);
     	lastServoSet = System.currentTimeMillis();
     }
 	
