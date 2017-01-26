@@ -23,6 +23,7 @@ public class RobotMap {
 							climber=4;
 		
 		public static int   Shooter=0; 	//Talons  Encoder Here too
+		public static final int Feeder = 2;
 		
 		
 		public static int[] leftEncoder={0,1},
