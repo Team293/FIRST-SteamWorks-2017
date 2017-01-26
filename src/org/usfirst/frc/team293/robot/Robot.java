@@ -12,6 +12,7 @@ import org.usfirst.frc.team293.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team293.robot.subsystems.continuousFunctions;
 import org.usfirst.frc.team293.robot.subsystems.GearPouch;
 import org.usfirst.frc.team293.robot.subsystems.Feeder;
+import org.usfirst.frc.team293.robot.subsystems.LEDs;
 
 import autonomi.StraightTurnRightGear_GyroEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -32,6 +33,7 @@ public class Robot extends IterativeRobot {
 	public static continuousFunctions ContinuousFunctions;
 	public static GearPouch GearPouch;
 	public static Feeder Feeder;
+	public static LEDs LEDs;
 
     Command autonomousCommand;
     SendableChooser chooser;
@@ -46,6 +48,7 @@ public class Robot extends IterativeRobot {
 		ContinuousFunctions = new continuousFunctions();
 		GearPouch = new GearPouch();
 		Feeder = new Feeder();
+		LEDs = new LEDs();
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new StraightTurnRightGear_GyroEncoder());
 //        chooser.addObject("My Auto", new MyAutoCommand());

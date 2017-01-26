@@ -13,8 +13,14 @@ public class runContinuousFunctions extends Command {
 	
 	protected void execute(){
 		Robot.ContinuousFunctions.hasGear = Robot.GearPouch.hasGear();
-		System.out.println(Robot.ContinuousFunctions.hasGear);
 		Robot.ContinuousFunctions.isAligned = Robot.GearPouch.isAligned();
+		
+	}
+	
+	public void sendLEDCode(){
+		if(Robot.ContinuousFunctions.hasGear){
+			Robot.LEDs.writeByte(Robot.LEDs.HasGear);
+		}
 	}
 	
 	@Override
