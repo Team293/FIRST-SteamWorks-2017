@@ -191,6 +191,10 @@ public class Camera extends Subsystem {
 	public double getDist(){
 		return 2945.7*Math.pow(myGoal.y,-1.032);
 	}
+	
+	public double getAzimuth(){			//Tells us what angle we are at (RELATIVE).
+    	return (170.0*(servoAngle - baseX));//degrees
+    }
 
 	@Override
 	protected void initDefaultCommand() {
