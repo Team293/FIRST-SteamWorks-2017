@@ -1,6 +1,7 @@
 package org.usfirst.frc.team293.robot.commands;
 
 import org.usfirst.frc.team293.robot.Robot;
+import org.usfirst.frc.team293.robot.subsystems.LEDs;
 import org.usfirst.frc.team293.robot.subsystems.continuousFunctions;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -19,7 +20,7 @@ public class runContinuousFunctions extends Command {
 	
 	public void sendLEDCode(){
 		if(Robot.ContinuousFunctions.hasGear){
-			Robot.LEDs.writeByte(Robot.LEDs.HasGear);
+			Robot.LEDs.writeByte(LEDs.HasGear);
 		}
 	}
 	
