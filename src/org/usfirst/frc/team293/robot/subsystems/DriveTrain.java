@@ -47,15 +47,15 @@ public class DriveTrain extends Subsystem {
     	gyro=new ADXRS450_Gyro();		//`	
 	}
  
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        setDefaultCommand(new DefaultTankDrive());
+    public void initDefaultCommand() {       
+        setDefaultCommand(new DefaultTankDrive());	// Set the default command for a subsystem here.
     }  
     
     public void tankdrive(double left, double right){
 		drive.tankDrive(left, right);
 	}
-    
+   
+//////////////////////////////Gyro Stuff-->>>
     public void resetGyro(){
     	offsetGyro=gyro.getAngle();
     }
@@ -99,7 +99,7 @@ public class DriveTrain extends Subsystem {
         
         return turning;
     }
-    
+  //////////// ^Gyro Stuff  Encoder stuff--->>>  
 	public void resetEnc(){
 		leftEncoder.reset();
 		rightEncoder.reset();

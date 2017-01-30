@@ -2,7 +2,7 @@ package org.usfirst.frc.team293.robot.commands;
 
 import org.usfirst.frc.team293.robot.Robot;
 import org.usfirst.frc.team293.robot.subsystems.LEDs;
-import org.usfirst.frc.team293.robot.subsystems.continuousFunctions;
+import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -14,13 +14,11 @@ public class runContinuousFunctions extends Command {
 	
 	protected void execute(){
 		Robot.ContinuousFunctions.hasGear = Robot.GearPouch.hasGear();
-		Robot.ContinuousFunctions.isAligned = Robot.GearPouch.isAligned();
 		
 	}
 	
 	public void sendLEDCode(){
 		if(Robot.ContinuousFunctions.hasGear){
-			Robot.LEDs.writeByte(LEDs.HasGear);
 		}
 	}
 	

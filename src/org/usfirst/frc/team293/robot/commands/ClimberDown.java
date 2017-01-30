@@ -1,28 +1,23 @@
 package org.usfirst.frc.team293.robot.commands;
 
-import org.usfirst.frc.team293.robot.OI;
-import org.usfirst.frc.team293.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DefaultTankDrive extends Command {
+public class ClimberDown extends Command {
 
-    public DefaultTankDrive() {
-    	requires(Robot.driveTrain);// Use requires() here to declare subsystem dependencies
+    public ClimberDown() {
+        // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("CurrentCommand","DefaultTank");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.tankdrive(OI.rightStick.getY(), OI.leftStick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -1,21 +1,36 @@
 package org.usfirst.frc.team293.robot.subsystems;
 
+import org.usfirst.frc.team293.robot.RobotMap;
+
+import com.ctre.CANTalon;
+import com.ctre.CANTalon.TalonControlMode;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
 public class CombClimber extends Subsystem {
-    
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
-
 	
-	//should start 30 SECONDS LEFT IN THE MATCH
+	CANTalon climber;
+	
+	public CombClimber(){
+		climber =new CANTalon(RobotMap.climber);		
+		climber.changeControlMode(TalonControlMode.PercentVbus);
+		climber.enableBrakeMode(true);
+		climber.EnableCurrentLimit(true);
+		climber.setCurrentLimit(38);
+	}
 	
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public void climb(){
+    	climber.set(1);   	
+    }
+    
+    public void stop(){
+    	climber.set(0); 	
     }
 }
 

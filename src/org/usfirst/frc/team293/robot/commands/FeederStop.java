@@ -1,33 +1,31 @@
 package org.usfirst.frc.team293.robot.commands;
 
-import org.usfirst.frc.team293.robot.OI;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class DefaultTankDrive extends Command {
+public class FeederStop extends Command {
 
-    public DefaultTankDrive() {
-    	requires(Robot.driveTrain);// Use requires() here to declare subsystem dependencies
+    public FeederStop() {
+        // Use requires() here to declare subsystem dependencies
+        requires(Robot.Feeder);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("CurrentCommand","DefaultTank");
+    	Robot.Feeder.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.tankdrive(OI.rightStick.getY(), OI.leftStick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
     // Called once after isFinished returns true
