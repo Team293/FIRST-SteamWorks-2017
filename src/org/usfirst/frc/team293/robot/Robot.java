@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team293.robot.subsystems.Camera;
+import org.usfirst.frc.team293.robot.subsystems.CombClimber;
 import org.usfirst.frc.team293.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 import org.usfirst.frc.team293.robot.subsystems.GearPouch;
@@ -31,6 +32,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
 	public static Camera Camera;
+	public static CombClimber Climber;
 	public static ContinuousFunctions ContinuousFunctions;
 	public static GearPouch GearPouch;
 	public static Feeder Feeder;
@@ -47,6 +49,7 @@ public class Robot extends IterativeRobot {
     	
 		oi = new OI();
 		Camera = new Camera();
+		Climber= new CombClimber();
 		ContinuousFunctions = new ContinuousFunctions();
 		GearPouch = new GearPouch();
 		Feeder = new Feeder();

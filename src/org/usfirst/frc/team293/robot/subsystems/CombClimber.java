@@ -25,8 +25,12 @@ public class CombClimber extends Subsystem {
     public void initDefaultCommand() {
     }
     
-    public void climb(){
+    public void start(){
     	climber.set(1);   	
+    }
+    
+    public void reverse(){
+    	climber.set(-1);
     }
     
     public void stop(){

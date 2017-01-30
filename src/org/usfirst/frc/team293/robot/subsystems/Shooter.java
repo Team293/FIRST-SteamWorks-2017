@@ -25,9 +25,9 @@ public class Shooter extends Subsystem {
 		shooter.setFeedbackDevice(FeedbackDevice.EncFalling);
 		shooter.reverseOutput(false);
 		shooter.reverseSensor(false);
-		shooter.configEncoderCodesPerRev(4);
+		shooter.configEncoderCodesPerRev(256);
 		//shooterwheel.getMotionProfileTopLevelBufferCount();
-		shooter.setPID(225,0.00001, 0); // Set the PID constants (p, i, d)
+		shooter.setPID(22,0.00001, 1); // Set the PID constants (p, i, d)
 		shooter.setF(.6);// what we think it should be
 	}
 	
