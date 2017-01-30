@@ -5,9 +5,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class StraightGear_GyroEncoder extends CommandGroup {
-    //So this distance is 9.5 ft...but the robot is 36 inches so that makes the distance the front needs to go 6.5 ft
-    public  StraightGear_GyroEncoder() {
+public class AutoGearApproachGoal extends CommandGroup {
+    /*Basically, this autonomous program should consist of the StraightGear_GyroEncoder program as well as being able to turn and
+	approach the goal. This should be possible if our teammates don't do the same thing.*/
+    public  AutoGearApproachGoal() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
