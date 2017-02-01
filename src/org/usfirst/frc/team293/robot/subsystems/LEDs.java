@@ -11,8 +11,6 @@ public class LEDs {
 				  
 	public LEDs(){			//initializes the Serial Port
 		port= new SerialPort(9600, Port.kMXP);
-		
-		
 	}
     
 	public void sendData(String datas){

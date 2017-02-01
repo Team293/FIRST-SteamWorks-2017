@@ -8,14 +8,14 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.buttons.Trigger;
 
-public class ContinuousFunctions extends Subsystem {
+public class continuousFunctions extends Subsystem {
 	public boolean hasGear = false;
 	public int isAligned = 0;
     public Trigger trigger;
 	
 	PowerDistributionPanel pdp;
 	
-	public ContinuousFunctions(){
+	public continuousFunctions(){
 		pdp= new PowerDistributionPanel();
 		pdp.clearStickyFaults();
 		trigger.equals(true);

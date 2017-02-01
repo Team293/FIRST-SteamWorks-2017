@@ -61,6 +61,8 @@ public class Robot extends IterativeRobot {
         chooser.addDefault("Default Auto", new StraightTurnRightGear_GyroEncoder());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
+        
+   
     }
     
     public void disabledInit(){
