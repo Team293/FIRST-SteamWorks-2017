@@ -7,11 +7,11 @@ package org.usfirst.frc.team293.robot;
  */
 public class RobotMap {
 
-		public static int   rightDrive=0, 	//Victors
-							leftDrive=1,
+		public static int[]   rightDrive={0,1,2}, 	//Victors
+							leftDrive={3,4,5};
 							
-							shooterTrigger=2,
-							ballFeeder=3;
+		public static int	shooterTrigger=6,
+							ballFeeder=7;
 							
 		public static int[]	flapServo={8,9}; 	//Flap Servo
 		

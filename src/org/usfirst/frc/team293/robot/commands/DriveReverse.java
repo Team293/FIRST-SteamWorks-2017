@@ -7,17 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ShooterHighGoal extends Command {
+public class DriveReverse extends Command {
 
-    public ShooterHighGoal() {
+    public DriveReverse() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.Shooter);
+        // eg. requires(chassis);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Shooter.ShootFast();
-    	Robot.LEDs.sendData(Robot.LEDs.orangeChasing);
+    	Robot.driveTrain.reverseDrive();
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -1,6 +1,7 @@
 
 package org.usfirst.frc.team293.robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,6 +16,7 @@ import org.usfirst.frc.team293.robot.subsystems.GearPouch;
 import org.usfirst.frc.team293.robot.subsystems.Feeder;
 import org.usfirst.frc.team293.robot.subsystems.LEDs;
 import org.usfirst.frc.team293.robot.subsystems.Shooter;
+import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 
 import autonomi.StraightTurnRightGear_GyroEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -40,6 +42,9 @@ public class Robot extends IterativeRobot {
 	public static Shooter Shooter;
     Command autonomousCommand;
     SendableChooser chooser;
+    
+   public static DriverStation.Alliance color;
+  
 
     /**
      * This function is run when the robot is first started up and should be
@@ -75,8 +80,15 @@ public class Robot extends IterativeRobot {
 
 
     public void autonomousInit() {
+    	color = DriverStation.getInstance().getAlliance();
+
         autonomousCommand = (Command) chooser.getSelected();
-       
+        if(color == DriverStation.Alliance.Blue){
+        	LEDs.sendData(LEDs.blueChasing);
+        } else{
+           LEDs.sendData(LEDs.redChasing);
+        }
+        
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		switch(autoSelected) {
 		case "My Auto":

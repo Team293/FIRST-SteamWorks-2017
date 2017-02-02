@@ -1,5 +1,6 @@
 package org.usfirst.frc.team293.robot.subsystems;
 
+import org.usfirst.frc.team293.robot.Robot;
 import org.usfirst.frc.team293.robot.RobotMap;
 import org.usfirst.frc.team293.robot.commands.DefaultTankDrive;
 
@@ -17,7 +18,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 public class DriveTrain extends Subsystem {
-	private SpeedController leftMotor, rightMotor;
+	private SpeedController leftMotorOne, leftMotorTwo, leftMotorThree, rightMotorOne, rightMotorTwo, rightMotorThree;
 
 	private Gyro gyro;
 	private RobotDrive drive;
@@ -32,13 +33,19 @@ public class DriveTrain extends Subsystem {
 	double derivative;
 	double angle;
 	double offsetGyro;
+	boolean forward=true;
+	
+	public boolean direction=false;
 	
 	public boolean turning=false;
 	
 	public DriveTrain(){	//make drivetrain stuff
-		leftMotor = new VictorSP(RobotMap.leftDrive);
-		rightMotor = new VictorSP(RobotMap.rightDrive);
-		drive = new RobotDrive(leftMotor, rightMotor);	
+		leftMotorOne = new VictorSP(RobotMap.leftDrive[0]);
+		leftMotorTwo= new VictorSP(RobotMap.leftDrive[1]);
+		rightMotorOne= new VictorSP(RobotMap.rightDrive[0]);
+		rightMotorTwo= new VictorSP(RobotMap.rightDrive[1]);
+		
+		drive = new RobotDrive(leftMotorOne, leftMotorTwo, rightMotorOne, rightMotorTwo);	
 		
 		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.rightEncoder[1],true, EncodingType.k4X);	//creates encoder with fast sampling and true or false for direction
 		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.leftEncoder[1],false, EncodingType.k4X);
@@ -52,8 +59,19 @@ public class DriveTrain extends Subsystem {
     }  
     
     public void tankdrive(double left, double right){
+    	
 		drive.tankDrive(left, right);
 	}
+    
+    public void reverseDrive(){
+    	if (forward == true) {
+    		forward = false;
+    		Robot.LEDs.sendData(Robot.LEDs.purpleSolid);
+    	} else {
+    		forward = true;
+    		Robot.LEDs.sendData(Robot.LEDs.whiteSolid);
+    	}
+    }
    
 //////////////////////////////Gyro Stuff-->>>
     public void resetGyro(){

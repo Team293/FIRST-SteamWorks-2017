@@ -19,6 +19,7 @@ public class runContinuousFunctions extends Command {
 	
 	public void sendLEDCode(){
 		if(Robot.ContinuousFunctions.hasGear){
+			Robot.LEDs.sendData(Robot.LEDs.yellowSolid);
 		}
 	}
 	
