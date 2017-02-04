@@ -4,6 +4,9 @@ import org.usfirst.frc.team293.robot.Robot;
 import org.usfirst.frc.team293.robot.RobotMap;
 import org.usfirst.frc.team293.robot.commands.DefaultTankDrive;
 
+import com.ctre.PigeonImu;
+import com.ctre.PigeonImu.PigeonState;
+
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
@@ -20,7 +23,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	private SpeedController leftMotorOne, leftMotorTwo, leftMotorThree, rightMotorOne, rightMotorTwo, rightMotorThree;
 
-	//private Gyro gyro;
+	private PigeonImu imu;
 	private RobotDrive drive;
 	private Encoder leftEncoder, rightEncoder;
 	
@@ -35,6 +38,7 @@ public class DriveTrain extends Subsystem {
 	double offsetGyro;
 	boolean forward=true;
 	
+	public boolean imuStatus;
 	public boolean direction=false;
 	
 	public boolean turning=false;
@@ -45,13 +49,15 @@ public class DriveTrain extends Subsystem {
 		rightMotorOne= new VictorSP(RobotMap.rightDrive[0]);
 		rightMotorTwo= new VictorSP(RobotMap.rightDrive[1]);
 		
+		imu=new PigeonImu(RobotMap.imu);
+    	imu.EnableTemperatureCompensation(true);
+    	
 		drive = new RobotDrive(leftMotorOne, leftMotorTwo, rightMotorOne, rightMotorTwo);	
 		
 		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.rightEncoder[1],true, EncodingType.k4X);	//creates encoder with fast sampling and true or false for direction
 		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.leftEncoder[1],false, EncodingType.k4X);
 		
 		leftEncoder.setDistancePerPulse(150);//the amount of ticks to ft...still have to find this from P
-    //	gyro=new ADXRS450_Gyro();		//`	
 	}
  
     public void initDefaultCommand() {       
@@ -73,13 +79,17 @@ public class DriveTrain extends Subsystem {
     	}
     }
    
-//////////////////////////////Gyro Stuff-->>>
+//////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////
     public void resetGyro(){
-  //  	offsetGyro=gyro.getAngle();
+    	imu.SetFusedHeading(0.0);
     }
     
     public void gyroStraight(double speed){
-  //  	angle=gyro.getAngle()-offsetGyro;
+    	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
+    	imuStatus = (imu.GetState() != PigeonState.NoComm);
+    	
+     	angle=imu.GetFusedHeading(fusionStatus);
+     	
     	error=(angle-setpoint);
         
         finalPower=speed+(error*pValue);
@@ -90,8 +100,9 @@ public class DriveTrain extends Subsystem {
     }
 
     public boolean gyroTurn(double speed, double angle, double rate){
+    	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
+    	angle=imu.GetFusedHeading(fusionStatus);
     	
-   // 	angle=gyro.getAngle()-offsetGyro;
     	setpoint+=rate;
     	error=(angle-setpoint);
         
@@ -105,7 +116,8 @@ public class DriveTrain extends Subsystem {
     }
     
     public boolean gyroTurnInPlace(double angle, double rate){
-    //	angle=gyro.getAngle()-offsetGyro; ///Gets the angle and subtracts initial angle
+    	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
+    	angle=imu.GetFusedHeading(fusionStatus); ///Gets the angle
     	setpoint+=rate;  //adds the rate into the setpoint to gradually change it
     	error=(angle-setpoint); //finds how far you are off from the setpoint
         
@@ -118,6 +130,7 @@ public class DriveTrain extends Subsystem {
         return turning;
     }
   //////////// ^Gyro Stuff  Encoder stuff--->>>  
+    
 	public void resetEnc(){
 		leftEncoder.reset();
 		rightEncoder.reset();

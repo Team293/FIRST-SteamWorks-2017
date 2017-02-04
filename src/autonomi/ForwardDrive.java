@@ -14,8 +14,7 @@ public class ForwardDrive extends Command {
 
 	
     public ForwardDrive() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        requires(Robot.driveTrain);
     	setTimeout(6);
     }
 

@@ -1,4 +1,7 @@
 package org.usfirst.frc.team293.robot;
+
+import com.ctre.CANTalon;
+
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
  * to a variable name. This provides flexibility changing wiring, makes checking
@@ -16,8 +19,8 @@ public class RobotMap {
 		public static int[]	flapServo={8,9}; 	//Flap Servo
 		
 		public static int   shooter=1,	//Talons and an Encoder here too
-							climber=2;	//Talons for the current monitoring
-		
+							climber=2,	//Talons for the current monitoring
+							imu=3;
 		
 		public static int[] leftEncoder={0,1}, 	//Drivetrain Encoders
 							rightEncoder={2,3};
