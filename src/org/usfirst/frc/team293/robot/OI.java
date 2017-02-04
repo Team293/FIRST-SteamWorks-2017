@@ -2,18 +2,26 @@ package org.usfirst.frc.team293.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.buttons.Trigger;
+import org.usfirst.frc.team293.robot.commands.GearFlapClose;
 
 
 /**
  * This class is the glue that binds the controls on the physical operator
  * interface to the commands and command groups that allow control of the robot.
  */
+
 public class OI {
 	public static Joystick leftStick= new Joystick(0);
 	public static Joystick rightStick=new Joystick(1);
 	
 	public static Joystick gamePad= new Joystick(2);
+	///////////////////These Buttons are labeled from top to bottom left to right.
+	public static JoystickButton buttonOne= new JoystickButton(gamePad,1);
+	public OI(){
+		
+	buttonOne.whenPressed(new GearFlapClose());
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -41,5 +49,6 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand())
 	
+	}
 }
 
