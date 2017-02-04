@@ -5,10 +5,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class AutoGearApproachGoal extends CommandGroup {
-    /*Basically, this autonomous program should consist of the StraightGear_GyroEncoder program as well as being able to turn and
-	approach the goal. This should be possible if our teammates don't do the same thing.*/
-    public  AutoGearApproachGoal() {
+public class Stand extends CommandGroup {
+    
+    public  Stand() {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
