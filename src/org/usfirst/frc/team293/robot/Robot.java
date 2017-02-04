@@ -43,7 +43,7 @@ public class Robot extends IterativeRobot {
     Command autonomousCommand;
     SendableChooser chooser;
     
-   public static DriverStation.Alliance color;
+    public static DriverStation.Alliance color;
   
 
     /**
@@ -64,7 +64,7 @@ public class Robot extends IterativeRobot {
 		
         chooser = new SendableChooser();
         chooser.addDefault("Default Auto", new StraightTurnRightGear_GyroEncoder());
-//        chooser.addObject("My Auto", new MyAutoCommand());
+      //  chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
         
    
@@ -82,8 +82,8 @@ public class Robot extends IterativeRobot {
     public void autonomousInit() {
     	color = DriverStation.getInstance().getAlliance();
 
-        autonomousCommand = (Command) chooser.getSelected();
-        if(color == DriverStation.Alliance.Blue){
+    	autonomousCommand = (Command) chooser.getSelected();
+    	if(color == DriverStation.Alliance.Blue){
         	LEDs.sendData(LEDs.blueChasing);
         } else{
            LEDs.sendData(LEDs.redChasing);

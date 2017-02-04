@@ -12,6 +12,7 @@ public class FeederFoward extends Command {
 	}
 	protected void initialize(){
 		Robot.Feeder.runForward();
+		Robot.LEDs.sendData(Robot.LEDs.orangeSolid);
 	}
 	
 	protected void execute(){

@@ -7,16 +7,16 @@ package org.usfirst.frc.team293.robot;
  */
 public class RobotMap {
 
-		public static int[]   rightDrive={0,1,2}, 	//Victors
-							leftDrive={3,4,5};
+		public static int[]   rightDrive={0,1}, 	//Victors
+							leftDrive={2,3};
 							
-		public static int	shooterTrigger=6,
-							ballFeeder=7;
-							
+		public static int	ballFeeder=5,
+							shooterTrigger=6;
+		public static int	visionServoPin = 7; //Pin for camera Servo						
 		public static int[]	flapServo={8,9}; 	//Flap Servo
 		
-		public static int   shooter=0,	//Talons and an Encoder here too
-							climber=1;	//Talons for the current monitoring
+		public static int   shooter=1,	//Talons and an Encoder here too
+							climber=2;	//Talons for the current monitoring
 		
 		
 		public static int[] leftEncoder={0,1}, 	//Drivetrain Encoders
@@ -25,7 +25,7 @@ public class RobotMap {
 		public static int	limitGear=4;		//Optical Limit to see if we have gear.
 							
 		
-		public static int	visionServoPin = 7; //Pin for camera Servo
+
 				
 		///////////////POWER DISTRIBUTION STUFF////////////////////
 		public static int[] pdpLeftDrive={0,1,2}; 		//40A

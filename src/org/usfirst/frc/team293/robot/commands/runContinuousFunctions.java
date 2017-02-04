@@ -13,14 +13,13 @@ public class runContinuousFunctions extends Command {
 	}
 	
 	protected void execute(){
-		Robot.ContinuousFunctions.hasGear = Robot.GearPouch.hasGear();
-		
+//		Robot.ContinuousFunctions.hasGear = Robot.GearPouch.hasGear();	
 	}
 	
 	public void sendLEDCode(){
-		if(Robot.ContinuousFunctions.hasGear){
-			Robot.LEDs.sendData(Robot.LEDs.yellowSolid);
-		}
+//		if(Robot.ContinuousFunctions.hasGear){
+	//		Robot.LEDs.sendData(Robot.LEDs.yellowSolid);
+	//	}
 	}
 	
 	@Override

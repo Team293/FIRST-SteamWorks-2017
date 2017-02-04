@@ -20,7 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	private SpeedController leftMotorOne, leftMotorTwo, leftMotorThree, rightMotorOne, rightMotorTwo, rightMotorThree;
 
-	private Gyro gyro;
+	//private Gyro gyro;
 	private RobotDrive drive;
 	private Encoder leftEncoder, rightEncoder;
 	
@@ -51,7 +51,7 @@ public class DriveTrain extends Subsystem {
 		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.leftEncoder[1],false, EncodingType.k4X);
 		
 		leftEncoder.setDistancePerPulse(150);//the amount of ticks to ft...still have to find this from P
-    	gyro=new ADXRS450_Gyro();		//`	
+    //	gyro=new ADXRS450_Gyro();		//`	
 	}
  
     public void initDefaultCommand() {       
@@ -75,11 +75,11 @@ public class DriveTrain extends Subsystem {
    
 //////////////////////////////Gyro Stuff-->>>
     public void resetGyro(){
-    	offsetGyro=gyro.getAngle();
+  //  	offsetGyro=gyro.getAngle();
     }
     
     public void gyroStraight(double speed){
-    	angle=gyro.getAngle()-offsetGyro;
+  //  	angle=gyro.getAngle()-offsetGyro;
     	error=(angle-setpoint);
         
         finalPower=speed+(error*pValue);
@@ -91,7 +91,7 @@ public class DriveTrain extends Subsystem {
 
     public boolean gyroTurn(double speed, double angle, double rate){
     	
-    	angle=gyro.getAngle()-offsetGyro;
+   // 	angle=gyro.getAngle()-offsetGyro;
     	setpoint+=rate;
     	error=(angle-setpoint);
         
@@ -105,7 +105,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public boolean gyroTurnInPlace(double angle, double rate){
-    	angle=gyro.getAngle()-offsetGyro; ///Gets the angle and subtracts initial angle
+    //	angle=gyro.getAngle()-offsetGyro; ///Gets the angle and subtracts initial angle
     	setpoint+=rate;  //adds the rate into the setpoint to gradually change it
     	error=(angle-setpoint); //finds how far you are off from the setpoint
         

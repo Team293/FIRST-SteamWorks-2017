@@ -11,14 +11,14 @@ import edu.wpi.first.wpilibj.buttons.Trigger;
 public class ContinuousFunctions extends Subsystem {
 	public boolean hasGear = false;
 	public int isAligned = 0;
-    public Trigger trigger;
+    //public Trigger trigger;
 	
 	PowerDistributionPanel pdp;
 	
 	public ContinuousFunctions(){
 		pdp= new PowerDistributionPanel();
 		pdp.clearStickyFaults();
-		trigger.equals(true);
+	//	trigger.equals(true);
 	}
 	
 	protected void initDefaultCommand() {
