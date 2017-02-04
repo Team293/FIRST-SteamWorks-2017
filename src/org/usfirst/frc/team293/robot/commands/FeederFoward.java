@@ -3,6 +3,7 @@ package org.usfirst.frc.team293.robot.commands;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class FeederFoward extends Command {
 	
@@ -13,6 +14,7 @@ public class FeederFoward extends Command {
 	protected void initialize(){
 		Robot.Feeder.runForward();
 		Robot.LEDs.sendData(Robot.LEDs.orangeSolid);
+		SmartDashboard.putBoolean("Feeder Moving?", true);
 	}
 	
 	protected void execute(){

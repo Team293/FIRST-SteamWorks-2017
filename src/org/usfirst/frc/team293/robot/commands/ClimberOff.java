@@ -3,6 +3,7 @@ package org.usfirst.frc.team293.robot.commands;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,6 +19,7 @@ public class ClimberOff extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.Climber.stop();
+    	SmartDashboard.putBoolean("Climbing?", false);
     }
 
     // Called repeatedly when this Command is scheduled to run

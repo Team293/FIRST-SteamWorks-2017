@@ -3,6 +3,7 @@ package org.usfirst.frc.team293.robot.commands;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -18,6 +19,8 @@ public class ShooterHighGoal extends Command {
     protected void initialize() {
     	Robot.Shooter.ShootFast();
     	Robot.LEDs.sendData(Robot.LEDs.orangeChasing);
+    	SmartDashboard.putString("Shooter Status", "High Goal");
+
     }
 
     // Called repeatedly when this Command is scheduled to run

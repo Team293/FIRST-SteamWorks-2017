@@ -13,7 +13,7 @@ public class runContinuousFunctions extends Command {
 	}
 	
 	protected void execute(){
-//		Robot.ContinuousFunctions.hasGear = Robot.GearPouch.hasGear();	
+		Robot.ContinuousFunctions.currentMonitor();
 	}
 	
 	public void sendLEDCode(){

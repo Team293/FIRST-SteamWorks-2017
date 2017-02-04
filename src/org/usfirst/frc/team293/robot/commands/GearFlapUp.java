@@ -3,16 +3,16 @@ package org.usfirst.frc.team293.robot.commands;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
+public class GearFlapUp extends Command {
 
-public class GearFlapClose extends Command {
-	
 	double time = 0.5;
-
-    public GearFlapClose() {
+	
+    public GearFlapUp() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.gearPouch);
@@ -21,7 +21,7 @@ public class GearFlapClose extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.gearPouch.closeFlap();
+    	Robot.gearPouch.openFlap();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -35,7 +35,8 @@ public class GearFlapClose extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.gearPouch.disableFLap();
+    	SmartDashboard.putBoolean("Gear Up?", true);
+    	//Robot.LEDs.sendData(Robot.LEDs.);
     }
 
     // Called when another command which requires one or more of the same

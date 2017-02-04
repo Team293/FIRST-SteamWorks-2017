@@ -18,7 +18,14 @@ import org.usfirst.frc.team293.robot.subsystems.LEDs;
 import org.usfirst.frc.team293.robot.subsystems.Shooter;
 import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 
+import autonomi.ForwardDrive;
+import autonomi.GearLeftHopperRight_GyroEncoder;
+import autonomi.GearStraight_GyroEncoder;
+import autonomi.GearTurnLeft_GyroEncoder;
+import autonomi.GearTurnRightGoal_GyroEncoder;
 import autonomi.GearTurnRight_GyroEncoder;
+import autonomi.HopperShooterLeftHopper_GyroEncoder;
+import autonomi.Stand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -52,9 +59,19 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new GearTurnRight_GyroEncoder());
+        chooser.addDefault("Stand Still", new Stand());
+        chooser.addObject("Foward Drive", new ForwardDrive());
+        chooser.addObject("Gear (turn left), Right Hopper", new GearLeftHopperRight_GyroEncoder());
+        chooser.addObject("Center Gear", new GearStraight_GyroEncoder());
+        chooser.addObject("Gear (turn left)", new GearTurnLeft_GyroEncoder());
+        chooser.addObject("Gear (turn right)", new GearTurnRight_GyroEncoder());
+        chooser.addObject("Gear (turn right), goal", new GearTurnRightGoal_GyroEncoder());
+        chooser.addObject("Hopper left, Shoot", new HopperShooterLeftHopper_GyroEncoder());
+        
+        
+        
       //  chooser.addObject("My Auto", new MyAutoCommand());
-        SmartDashboard.putData("Auto mode", chooser);
+        SmartDashboard.putData("Auto mode Chooser", chooser);
         
    
     }
@@ -72,6 +89,7 @@ public class Robot extends IterativeRobot {
     	color = DriverStation.getInstance().getAlliance();
 
     	autonomousCommand = (Command) chooser.getSelected();
+    	autonomousCommand.start();
     	if(color == DriverStation.Alliance.Blue){
         	LEDs.sendData(LEDs.blueChasing);
         } else{
