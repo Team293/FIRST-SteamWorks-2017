@@ -14,13 +14,13 @@ public class GearFlapOpen extends Command {
     public GearFlapOpen() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.GearPouch);
+    	requires(Robot.gearPouch);
     	setTimeout(time);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.GearPouch.openFlap();
+    	Robot.gearPouch.openFlap();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -34,7 +34,7 @@ public class GearFlapOpen extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.GearPouch.disableFLap();
+    	Robot.gearPouch.disableFLap();
     }
 
     // Called when another command which requires one or more of the same

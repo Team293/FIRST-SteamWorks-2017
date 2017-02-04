@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GearLeftHopperRight_GyroEncoder extends CommandGroup {
     
     public  GearLeftHopperRight_GyroEncoder() {
-    	addSequential(new StraightTurnLeftGear_GyroEncoder());
+    	addSequential(new GearTurnLeft_GyroEncoder());
     	addSequential(new DriveStraightGyroEncoder(24, -0.5)); //inches TBD
     	addSequential(new DriveTurnGyroInPlace(30, 45)); //double check angle
     	addSequential(new DriveStraightGyroEncoder(40, 0.5)); //inches TBD

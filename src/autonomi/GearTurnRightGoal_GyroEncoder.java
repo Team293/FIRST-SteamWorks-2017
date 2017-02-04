@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class StraightTurnLeftGearApproachGoal_GyroEncoder extends CommandGroup {
+public class GearTurnRightGoal_GyroEncoder extends CommandGroup {
     /*Basically, this autonomous program should consist of the StraightGear_GyroEncoder program as well as being able to turn and
 	approach the goal. This should be possible if our teammates don't do the same thing.*/
-    public  StraightTurnLeftGearApproachGoal_GyroEncoder() {
-    	addSequential(new StraightTurnLeftGear_GyroEncoder());
+    public  GearTurnRightGoal_GyroEncoder() {
+    	addSequential(new GearTurnRight_GyroEncoder());
     	addSequential(new DriveStraightGyro(10,-.5));  //distance and speed DIMENSIONS TBD
     	addSequential(new DriveTurnGyroInPlace(15,3));	//angle, rate DIMENSIONS TBD
     	addSequential(new DriveStraightGyro(2,-.5));  //distance and speed DIMENSIONS TBD

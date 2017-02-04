@@ -17,7 +17,7 @@ public class ContinuousFunctions extends Subsystem {
 	
 	public ContinuousFunctions(){
 		pdp= new PowerDistributionPanel();
-		pdp.clearStickyFaults();
+		//pdp.clearStickyFaults();
 	//	trigger.equals(true);
 	}
 	

@@ -10,8 +10,6 @@ import edu.wpi.first.wpilibj.command.Command;
 
 
 public class ForwardDrive extends Command {
-
-
 	
     public ForwardDrive() {
         requires(Robot.driveTrain);

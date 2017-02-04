@@ -18,7 +18,7 @@ import org.usfirst.frc.team293.robot.subsystems.LEDs;
 import org.usfirst.frc.team293.robot.subsystems.Shooter;
 import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 
-import autonomi.StraightTurnRightGear_GyroEncoder;
+import autonomi.GearTurnRight_GyroEncoder;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -33,13 +33,13 @@ public class Robot extends IterativeRobot {
 
 	public static final DriveTrain driveTrain = new DriveTrain();
 	public static OI oi;
-	public static Camera Camera;
-	public static CombClimber Climber;
-	public static ContinuousFunctions ContinuousFunctions;
-	public static GearPouch GearPouch;
-	public static Feeder Feeder;
-	public static LEDs LEDs;
-	public static Shooter Shooter;
+	public static Camera Camera=new Camera();
+	public static CombClimber Climber=new CombClimber();
+	public static ContinuousFunctions ContinuousFunctions=new ContinuousFunctions();
+	public static GearPouch gearPouch=new GearPouch();
+	public static Feeder Feeder=new Feeder();
+	public static LEDs LEDs=new LEDs();
+	public static Shooter Shooter=new Shooter();	
     Command autonomousCommand;
     SendableChooser chooser;
     
@@ -51,19 +51,8 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	
-		oi = new OI();
-		Camera = new Camera();
-		Climber= new CombClimber();
-		ContinuousFunctions = new ContinuousFunctions();
-		GearPouch = new GearPouch();
-		Feeder = new Feeder();
-		LEDs = new LEDs();
-		Shooter= new Shooter();
-		
-		
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new StraightTurnRightGear_GyroEncoder());
+        chooser.addDefault("Default Auto", new GearTurnRight_GyroEncoder());
       //  chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
         
