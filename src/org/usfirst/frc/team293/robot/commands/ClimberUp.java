@@ -3,6 +3,7 @@ package org.usfirst.frc.team293.robot.commands;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -17,6 +18,7 @@ public class ClimberUp extends Command {
     protected void initialize() {
     	Robot.Climber.start();
     	Robot.LEDs.sendData(Robot.LEDs.rainbow);
+    	SmartDashboard.putBoolean("Climbing?", true);
     }
 
     // Called repeatedly when this Command is scheduled to run
