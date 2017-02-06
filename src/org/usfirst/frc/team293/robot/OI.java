@@ -19,13 +19,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class OI {
 	///////////instantiate joysticks
-	 private static Joystick joy1 = new Joystick(0);
-	 private static Joystick joy2=new Joystick(1);
+	 public static Joystick leftStick = new Joystick(0);
+	 public static Joystick rightStick=new Joystick(1);
 	 public static Joystick launchpad=new Joystick(2);
 	 public static Joystick launchpad2=new Joystick(3);
 	 
 	public OI() {
-		JoystickButton padOne=new JoystickButton(launchpad,1);
+		JoystickButton padOne=new JoystickButton(launchpad,1);		//These are numbered top down, left to right
 		JoystickButton padTwo=new JoystickButton(launchpad,6);
 		JoystickButton padThree=new JoystickButton(launchpad,8);
 		JoystickButton padFour=new JoystickButton(launchpad,10);
@@ -38,7 +38,7 @@ public class OI {
 		JoystickButton twoWaySwitch=new JoystickButton(launchpad,11);
 		
 		twoWaySwitch.whileHeld(new FeederFoward());
-		padTwo.whenReleased(new FeederStop());
+		twoWaySwitch.whenReleased(new FeederStop());
 		//padThree.whenPressed(new Sh);
 		
 				

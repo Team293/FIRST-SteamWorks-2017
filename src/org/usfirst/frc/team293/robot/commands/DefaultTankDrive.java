@@ -17,12 +17,17 @@ public class DefaultTankDrive extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("CurrentCommand","DefaultTank");
+    	SmartDashboard.putString("Current Drive Command","DefaultTank");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    //	Robot.driveTrain.tankdrive(OI.rightStick.getY(), OI.leftStick.getY());
+    	if (Robot.driveTrain.reverseDirection==false){
+    			Robot.driveTrain.tankdrive(OI.rightStick.getY(), OI.leftStick.getY());
+    	}
+    	else{
+    		Robot.driveTrain.reverseTankdrive(OI.rightStick.getY(), OI.leftStick.getY());
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

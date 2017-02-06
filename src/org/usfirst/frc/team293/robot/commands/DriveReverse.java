@@ -16,8 +16,7 @@ public class DriveReverse extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.reverseDrive();
-    	
+    	Robot.driveTrain.reverseDrive();  //switches directions  	
     }
 
     // Called repeatedly when this Command is scheduled to run

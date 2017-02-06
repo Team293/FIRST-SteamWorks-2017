@@ -26,6 +26,7 @@ public class DriveTrain extends Subsystem {
 	private PigeonImu imu;
 	private RobotDrive drive;
 	private Encoder leftEncoder, rightEncoder;
+	public boolean reverseDirection=false;
 	
 	double finalPower=.5;
 	double pValue=-1.75;
@@ -64,12 +65,15 @@ public class DriveTrain extends Subsystem {
         setDefaultCommand(new DefaultTankDrive());	// Set the default command for a subsystem here.
     }  
     
-    public void tankdrive(double left, double right){
-    	
-		drive.tankDrive(left, right);
-	}
     
-    public void reverseDrive(){
+    public void tankdrive(double left, double right){
+		drive.tankDrive(left, right);    	
+	}
+    public void reverseTankdrive(double left, double right){	//going other direction command
+    	drive.tankDrive(-left, -right);
+    }
+    
+    public void reverseDrive(){								//Switch Direction we're going
     	if (forward == true) {
     		forward = false;
     		Robot.LEDs.sendData(Robot.LEDs.purpleSolid);
