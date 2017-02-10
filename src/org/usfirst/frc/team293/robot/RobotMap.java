@@ -25,7 +25,8 @@ public class RobotMap {
 		public static int[] leftEncoder={0,1}, 	//Drivetrain Encoders
 							rightEncoder={2,3};
 		
-		public static int	limitGear=4;		//Optical Limit to see if we have gear.
+		//limitGear not on final robot, de-comment if added
+		//public static int	limitGear=4;		//Optical Limit to see if we have gear.
 							
 		
 

@@ -2,6 +2,7 @@ package org.usfirst.frc.team293.robot;
 
 import org.usfirst.frc.team293.robot.commands.ClimberOff;
 import org.usfirst.frc.team293.robot.commands.ClimberUp;
+import org.usfirst.frc.team293.robot.commands.DriveReverse;
 import org.usfirst.frc.team293.robot.commands.FeederFoward;
 import org.usfirst.frc.team293.robot.commands.FeederStop;
 import org.usfirst.frc.team293.robot.commands.GearFlapDown;
@@ -113,6 +114,9 @@ public class OI {
 	 public static Joystick launchpad2=new Joystick(3);
 	 boolean winchactive;
 	public OI() {
+		JoystickButton leftTrigger=new JoystickButton(leftStick,2);
+		JoystickButton rightTrigger=new JoystickButton(rightStick,2);
+		
 		JoystickButton padOne=new JoystickButton(launchpad,1);		//These are numbered top down, left to right
 		JoystickButton padTwo=new JoystickButton(launchpad,6);
 		JoystickButton padThree=new JoystickButton(launchpad,8);
@@ -131,7 +135,10 @@ public class OI {
 		padSix.whenPressed(new GearFlapUp());
 		padEight.whenPressed(new GearFlapDown());
 		padNine.whenPressed( SmartDashboard.getBoolean("Climbing?", false) ? new ClimberOff() : new ClimberUp() );
-				
+			
+		
+		leftTrigger.whenPressed(new DriveReverse());
+		rightTrigger.whenPressed(new DriveReverse());
 	}
 }
 

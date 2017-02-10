@@ -48,7 +48,7 @@ public class Robot extends IterativeRobot {
 	public static LEDs LEDs=new LEDs();
 	public static Shooter Shooter=new Shooter();	
     Command autonomousCommand;
-    SendableChooser chooser;
+    SendableChooser<Command> chooser;	//any reason why it was typeless?
     
     public static DriverStation.Alliance color;
   
@@ -58,7 +58,7 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-        chooser = new SendableChooser();
+        chooser = new SendableChooser<Command>();
         chooser.addDefault("Stand Still", new Stand());
         chooser.addObject("Foward Drive", new ForwardDrive());
         chooser.addObject("Gear (turn left), Right Hopper", new GearLeftHopperRight_GyroEncoder());

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team293.robot.subsystems;
 
+import org.usfirst.frc.team293.robot.Robot;
 import org.usfirst.frc.team293.robot.RobotMap;
 import org.usfirst.frc.team293.robot.commands.runContinuousFunctions;
 
@@ -26,6 +27,9 @@ public class ContinuousFunctions extends Subsystem {
 	}
 	
 	public void currentMonitor(){
+		
+		SmartDashboard.putBoolean("Drive Direction", Robot.driveTrain.forward);
+		
 		SmartDashboard.putNumber("Total Current", pdp.getTotalCurrent());
 		SmartDashboard.putNumber("DriveTrain Current", pdp.getCurrent(RobotMap.pdpLeftDrive[0])+pdp.getCurrent(RobotMap.pdpLeftDrive[1])+pdp.getCurrent(RobotMap.pdpLeftDrive[2])+pdp.getCurrent(RobotMap.pdpRightDrive[0])+pdp.getCurrent(RobotMap.pdpRightDrive[1])+pdp.getCurrent(RobotMap.pdpRightDrive[2]));
 		SmartDashboard.putNumber("Shooter Current", pdp.getCurrent(RobotMap.pdpShooter));

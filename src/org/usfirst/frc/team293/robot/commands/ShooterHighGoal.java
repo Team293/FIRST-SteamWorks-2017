@@ -17,7 +17,7 @@ public class ShooterHighGoal extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Shooter.ShootFast();
+    	Robot.Shooter.ShootHigh();
     	Robot.LEDs.sendData(Robot.LEDs.orangeChasing);
     	SmartDashboard.putString("Shooter Status", "High Goal");
 

@@ -17,7 +17,7 @@ public class ShooterLowGoal extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Shooter.ShootSlow();
+    	Robot.Shooter.ShootLow();
     	SmartDashboard.putString("Shooter Status", "Low Goal");
     }
 

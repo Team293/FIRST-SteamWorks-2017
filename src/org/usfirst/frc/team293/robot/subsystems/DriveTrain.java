@@ -37,7 +37,7 @@ public class DriveTrain extends Subsystem {
 	double derivative;
 	double angle;
 	double offsetGyro;
-	boolean forward=true;
+	public boolean forward = true;
 	
 	public boolean imuStatus;
 	public boolean direction=false;
@@ -67,13 +67,18 @@ public class DriveTrain extends Subsystem {
     
     
     public void tankdrive(double left, double right){
-		drive.tankDrive(left, right);    	
+      	if (forward==false){
+    		drive.tankDrive(-right, -left);
+    	}
+      	else{
+    		drive.tankDrive(left, right);  
+    	}
+  
 	}
-    public void reverseTankdrive(double left, double right){	//going other direction command
-    	drive.tankDrive(-left, -right);
-    }
     
     public void reverseDrive(){								//Switch Direction we're going
+    	
+    	SmartDashboard.putNumber("Reverse Drive", 1000);
     	if (forward == true) {
     		forward = false;
     		Robot.LEDs.sendData(Robot.LEDs.purpleSolid);

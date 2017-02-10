@@ -22,12 +22,7 @@ public class DefaultTankDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (Robot.driveTrain.reverseDirection==false){
-    			Robot.driveTrain.tankdrive(OI.rightStick.getY(), OI.leftStick.getY());
-    	}
-    	else{
-    		Robot.driveTrain.reverseTankdrive(OI.rightStick.getY(), OI.leftStick.getY());
-    	}
+    	Robot.driveTrain.tankdrive(OI.rightStick.getY(), OI.leftStick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()

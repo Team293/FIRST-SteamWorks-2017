@@ -34,13 +34,13 @@ public class Shooter extends Subsystem {
     public void initDefaultCommand() {
     }
     
-    public void ShootFast(){
+    public void ShootHigh(){
     	shooter.enableControl(); // Enable PID control on the talon
     	shooterTrigger.set(1);
     	shooter.setSetpoint(1800);
     }
     
-    public void ShootSlow(){
+    public void ShootLow(){
     	shooter.enableControl(); // Enable PID control on the talon
     	shooterTrigger.set(0.5);
     	shooter.setSetpoint(1000);

@@ -29,7 +29,7 @@ public class CombClimber extends Subsystem {
     	climber.set(1);   	
     }
     
-    public void reverse(){
+    public void reverse(){	//may need to be removed
     	climber.set(-1);
     }
     
