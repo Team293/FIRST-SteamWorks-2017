@@ -20,24 +20,25 @@ public class RobotMap {
 		
 		public static int   shooter=2,	//Talons and an Encoder here too
 							climber=1,	//Talons for the current monitoring
-							imu=3;
+							climbertwo=3,
+							pdp=4,
+							imu=5;
 		
 		public static int[] leftEncoder={0,1}, 	//Drivetrain Encoders
 							rightEncoder={2,3};
 		
-		//limitGear not on final robot, de-comment if added
-		//public static int	limitGear=4;		//Optical Limit to see if we have gear.
+		public static int	limitGear=4;		//Optical Limit to see if we have gear.
 							
 		
 
 				
 		///////////////POWER DISTRIBUTION STUFF////////////////////
-		public static int[] pdpLeftDrive={0,1,2}; 		//40A
-		public static int[] pdpRightDrive={13,14,15};	//40A
+		public static int[] pdpLeftDrive={15,14,13}; 	//40A
+		public static int[] pdpRightDrive={0,1,2};		//40A
 		
-		public static int pdpShooter=3;					//40A
+		public static int pdpShooter=10;				//40A
 		public static int pdpClimber=12;				//40A	
-		
+		public static int pdpServo=5;
 		public static int pdpShooterTrigger=11,			//30A
 						  pdpBallFeeder=4;				//30A
 }

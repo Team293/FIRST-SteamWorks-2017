@@ -17,7 +17,7 @@ public class ContinuousFunctions extends Subsystem {
 	public PowerDistributionPanel pdp;
 	
 	public ContinuousFunctions(){
-		pdp= new PowerDistributionPanel();
+		pdp= new PowerDistributionPanel(4);
 		//pdp.clearStickyFaults();
 	//	trigger.equals(true);
 	}
@@ -35,7 +35,8 @@ public class ContinuousFunctions extends Subsystem {
 		SmartDashboard.putNumber("Shooter Current", pdp.getCurrent(RobotMap.pdpShooter));
 		SmartDashboard.putNumber("Climber Current", pdp.getCurrent(RobotMap.pdpClimber));
 		
-		if (pdp.getCurrent(RobotMap.pdpShooterTrigger)>10||pdp.getCurrent(RobotMap.pdpClimber)>35||pdp.getCurrent(RobotMap.pdpBallFeeder)>10){
+		
+		if (pdp.getCurrent(RobotMap.pdpShooterTrigger)>12||pdp.getCurrent(RobotMap.pdpClimber)>35||pdp.getCurrent(RobotMap.pdpBallFeeder)>10){
 			SmartDashboard.putBoolean("Power Warning", true);	//OH BOY A MOTOR IS BURNING!
 		}
 		else{
