@@ -14,7 +14,7 @@ public class ContinuousFunctions extends Subsystem {
 	public int isAligned = 0;
     //public Trigger trigger;
 	
-	PowerDistributionPanel pdp;
+	public PowerDistributionPanel pdp;
 	
 	public ContinuousFunctions(){
 		pdp= new PowerDistributionPanel();

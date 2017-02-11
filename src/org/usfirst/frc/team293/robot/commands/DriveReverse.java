@@ -8,27 +8,28 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class DriveReverse extends Command {
-	boolean done=false;
+	boolean blah;
     public DriveReverse() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.driveTrain);
+    	requires(Robot.driveTrain);
+    	blah=false;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	System.out.print("blah");
-    	Robot.driveTrain.reverseDrive();  //switches directions  	
+    	//Robot.driveTrain.reverseDrive();  //switches directions  	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.driveTrain.reverseDrive(); 
-    	done=true;
+    	Robot.driveTrain.reverseDrive(); 
+    	blah=true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return done;
+        return blah;
     }
 
     // Called once after isFinished returns true

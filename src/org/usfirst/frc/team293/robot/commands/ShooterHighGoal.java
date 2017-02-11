@@ -12,13 +12,13 @@ public class ShooterHighGoal extends Command {
 
     public ShooterHighGoal() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.Shooter);
+        requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Shooter.ShootHigh();
-    	Robot.LEDs.sendData(Robot.LEDs.orangeChasing);
+    	Robot.shooter.ShootHigh();
+    	Robot.lEDs.sendData(Robot.lEDs.orangeChasing);
     	SmartDashboard.putString("Shooter Status", "High Goal");
 
     }

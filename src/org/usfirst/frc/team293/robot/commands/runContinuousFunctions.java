@@ -11,7 +11,9 @@ public class runContinuousFunctions extends Command {
 	public runContinuousFunctions(){
 		requires(Robot.ContinuousFunctions);
 	}
-	
+	   protected void initialize() {
+	    	Robot.ContinuousFunctions.pdp.clearStickyFaults();
+	    }
 	protected void execute(){
 		Robot.ContinuousFunctions.currentMonitor();
 	}

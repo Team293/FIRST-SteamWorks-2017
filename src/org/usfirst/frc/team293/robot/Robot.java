@@ -38,26 +38,37 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final DriveTrain driveTrain = new DriveTrain();
-	public static OI oi;
-	public static Camera Camera=new Camera();
-	public static CombClimber Climber=new CombClimber();
-	public static ContinuousFunctions ContinuousFunctions=new ContinuousFunctions();
-	public static GearPouch gearPouch=new GearPouch();
-	public static Feeder Feeder=new Feeder();
-	public static LEDs LEDs=new LEDs();
-	public static Shooter Shooter=new Shooter();	
+	
+	public static DriveTrain driveTrain;
+	public static Camera camera;
+	public static CombClimber Climber;
+	public static ContinuousFunctions ContinuousFunctions;
+	public static GearPouch gearPouch;
+	public static Feeder feeder;
+	public static LEDs lEDs;
+	public static Shooter shooter;	
     Command autonomousCommand;
     SendableChooser<Command> chooser;	//any reason why it was typeless?
     
     public static DriverStation.Alliance color;
-  
+    public static OI oi;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
+    	
+    	shooter=new Shooter();
+    	gearPouch=new GearPouch();
+    	feeder = new Feeder();
+    	driveTrain = new DriveTrain();
+    	camera = new Camera();
+    	Climber=new CombClimber();
+    	lEDs=new LEDs();
+    	ContinuousFunctions=new ContinuousFunctions();
+    	oi =new OI();
+    	
         chooser = new SendableChooser<Command>();
         chooser.addDefault("Stand Still", new Stand());
         chooser.addObject("Foward Drive", new ForwardDrive());
@@ -91,9 +102,9 @@ public class Robot extends IterativeRobot {
     	autonomousCommand = (Command) chooser.getSelected();
     	autonomousCommand.start();
     	if(color == DriverStation.Alliance.Blue){
-        	LEDs.sendData(LEDs.blueChasing);
+        	lEDs.sendData(lEDs.blueChasing);
         } else{
-           LEDs.sendData(LEDs.redChasing);
+           lEDs.sendData(lEDs.redChasing);
         }
         
 		/* String autoSelected = SmartDashboard.getString("Auto Selector", "Default");

@@ -12,22 +12,23 @@ public class FeederStop extends Command {
 
     public FeederStop() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.Feeder);
+        requires(Robot.feeder);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Feeder.stop();
+    	
     	SmartDashboard.putBoolean("Feeder Moving?", false);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.feeder.stop();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

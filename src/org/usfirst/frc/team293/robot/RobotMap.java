@@ -18,8 +18,8 @@ public class RobotMap {
 		public static int	visionServoPin = 7; //Pin for camera Servo						
 		public static int[]	flapServo={8,9}; 	//Flap Servo
 		
-		public static int   shooter=1,	//Talons and an Encoder here too
-							climber=2,	//Talons for the current monitoring
+		public static int   shooter=2,	//Talons and an Encoder here too
+							climber=1,	//Talons for the current monitoring
 							imu=3;
 		
 		public static int[] leftEncoder={0,1}, 	//Drivetrain Encoders

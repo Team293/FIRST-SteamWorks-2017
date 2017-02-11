@@ -18,7 +18,7 @@ public class FollowGearVision extends Command {
 	
 	
     	public FollowGearVision(){
-    		requires(Robot.Camera);
+    		requires(Robot.camera);
     	}
     	
     	// Called just before this Command runs the first time
@@ -27,21 +27,21 @@ public class FollowGearVision extends Command {
 
         // Called repeatedly when this Command is scheduled to run
         protected void execute() {
-        	boolean newData = Robot.Camera.getPiData();
+        	boolean newData = Robot.camera.getPiData();
         	if(newData == false && !lost){
         		lost = true;
         		timeLost = System.currentTimeMillis();
         	}
         	if(newData || (System.currentTimeMillis() - lastTime > Dt && !lost)){
-        		Robot.Camera.updatePID(newData);
-        		Robot.Camera.setServos();
+        		Robot.camera.updatePID(newData);
+        		Robot.camera.setServos();
         		//SmartDashboard.putNumber("Azimuth", Robot.Camera.getAzimuth());
             	//SmartDashboard.putNumber("Distance", Robot.Camera.getDistance());
             	lost = false;
         		lastTime = System.currentTimeMillis();
         	}else if(needToSearch()){
-        		Robot.Camera.search();
-        		Robot.Camera.setServos();
+        		Robot.camera.search();
+        		Robot.camera.setServos();
         		lastTime = System.currentTimeMillis();
         	}
         }

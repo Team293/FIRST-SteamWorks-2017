@@ -17,7 +17,7 @@ public class ClimberUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.Climber.start();
-    	Robot.LEDs.sendData(Robot.LEDs.rainbow);
+    	Robot.lEDs.sendData(Robot.lEDs.rainbow);
     	SmartDashboard.putBoolean("Climbing?", true);
     }
 
@@ -27,15 +27,17 @@ public class ClimberUp extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.Climber.stop();
     }
 
     // Called when another command which requires one or more of the same
     // subsystems is scheduled to run
     protected void interrupted() {
+    	Robot.Climber.stop();
     }
 }

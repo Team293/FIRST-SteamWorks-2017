@@ -9,16 +9,15 @@ public class FeederFoward extends Command {
 	
 	public FeederFoward() {
 		// TODO Auto-generated constructor stub
-		requires(Robot.Feeder);
+		requires(Robot.feeder);
 	}
 	protected void initialize(){
-		Robot.Feeder.runForward();
-		Robot.LEDs.sendData(Robot.LEDs.orangeSolid);
+		Robot.lEDs.sendData(Robot.lEDs.orangeSolid);
 		SmartDashboard.putBoolean("Feeder Moving?", true);
 	}
 	
 	protected void execute(){
-		
+		Robot.feeder.runForward();
 	}
 	
 	protected boolean isFinished() {

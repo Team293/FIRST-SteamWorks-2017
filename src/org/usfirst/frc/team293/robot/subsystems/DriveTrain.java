@@ -81,10 +81,10 @@ public class DriveTrain extends Subsystem {
     	SmartDashboard.putNumber("Reverse Drive", 1000);
     	if (forward == true) {
     		forward = false;
-    		Robot.LEDs.sendData(Robot.LEDs.purpleSolid);
+    		Robot.lEDs.sendData(Robot.lEDs.purpleSolid);
     	} else {
     		forward = true;
-    		Robot.LEDs.sendData(Robot.LEDs.whiteSolid);
+    		Robot.lEDs.sendData(Robot.lEDs.whiteSolid);
     	}
     }
    

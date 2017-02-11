@@ -12,17 +12,17 @@ public class ShooterLowGoal extends Command {
 
     public ShooterLowGoal() {
         // Use requires() here to declare subsystem dependencies
-    	requires(Robot.Shooter);
+    	requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Shooter.ShootLow();
     	SmartDashboard.putString("Shooter Status", "Low Goal");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.shooter.ShootLow();
     }
 
     // Make this return true when this Command no longer needs to run execute()

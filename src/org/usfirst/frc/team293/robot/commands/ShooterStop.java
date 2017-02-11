@@ -12,12 +12,12 @@ public class ShooterStop extends Command {
 
     public ShooterStop() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.Shooter);
+        requires(Robot.shooter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.Shooter.Stop();
+    	Robot.shooter.Stop();
     	SmartDashboard.putString("Shooter Status", "Stop");
 
     }

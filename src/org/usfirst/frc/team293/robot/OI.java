@@ -8,6 +8,8 @@ import org.usfirst.frc.team293.robot.commands.FeederStop;
 import org.usfirst.frc.team293.robot.commands.GearFlapDown;
 import org.usfirst.frc.team293.robot.commands.GearFlapUp;
 import org.usfirst.frc.team293.robot.commands.ShooterHighGoal;
+import org.usfirst.frc.team293.robot.commands.ShooterLowGoal;
+import org.usfirst.frc.team293.robot.commands.ShooterStop;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -115,7 +117,10 @@ public class OI {
 	 boolean winchactive;
 	public OI() {
 		JoystickButton leftTrigger=new JoystickButton(leftStick,2);
-		JoystickButton rightTrigger=new JoystickButton(rightStick,2);
+		JoystickButton rightTrigger=new JoystickButton(rightStick,2);		
+		JoystickButton leftThree=new JoystickButton(leftStick,3);
+		JoystickButton rightThree=new JoystickButton(rightStick,3);
+		
 		
 		JoystickButton padOne=new JoystickButton(launchpad,1);		//These are numbered top down, left to right
 		JoystickButton padTwo=new JoystickButton(launchpad,6);
@@ -131,11 +136,13 @@ public class OI {
 		
 		twoWaySwitch.whenPressed(new FeederFoward());
 		twoWaySwitch.whenReleased(new FeederStop());
-		padThree.whenPressed(new ShooterHighGoal());
+		//padThree.whenPressed(new ShooterHighGoal());
 		padSix.whenPressed(new GearFlapUp());
 		padEight.whenPressed(new GearFlapDown());
-		padNine.whenPressed( SmartDashboard.getBoolean("Climbing?", false) ? new ClimberOff() : new ClimberUp() );
-			
+		padNine.toggleWhenPressed(new ClimberUp());
+		
+		leftThree.toggleWhenPressed(new ShooterHighGoal());
+		rightThree.toggleWhenPressed(new ShooterStop());
 		
 		leftTrigger.whenPressed(new DriveReverse());
 		rightTrigger.whenPressed(new DriveReverse());
