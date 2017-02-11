@@ -2,7 +2,7 @@ package org.usfirst.frc.team293.robot.subsystems;
 
 import org.usfirst.frc.team293.robot.Robot;
 import org.usfirst.frc.team293.robot.RobotMap;
-import org.usfirst.frc.team293.robot.commands.DefaultTankDrive;
+import org.usfirst.frc.team293.robot.commands.TankDriveDefault;
 
 import com.ctre.PigeonImu;
 import com.ctre.PigeonImu.PigeonState;
@@ -62,30 +62,16 @@ public class DriveTrain extends Subsystem {
 	}
  
     public void initDefaultCommand() {       
-        setDefaultCommand(new DefaultTankDrive());	// Set the default command for a subsystem here.
+        setDefaultCommand(new TankDriveDefault());	// Set the default command for a subsystem here.
     }  
     
     
     public void tankdrive(double left, double right){
-      	if (forward==false){
-    		drive.tankDrive(-right, -left);
-    	}
-      	else{
-    		drive.tankDrive(left, right);  
-    	}
-  
+    	drive.tankDrive(left, right);  
 	}
     
-    public void reverseDrive(){								//Switch Direction we're going
-    	
-    	SmartDashboard.putNumber("Reverse Drive", 1000);
-    	if (forward == true) {
-    		forward = false;
-    		Robot.lEDs.sendData(Robot.lEDs.purpleSolid);
-    	} else {
-    		forward = true;
-    		Robot.lEDs.sendData(Robot.lEDs.whiteSolid);
-    	}
+    public void reverseDrive(double left, double right){								//Switch Direction we're going
+    	drive.tankDrive(-right,-left);
     }
    
 //////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////
@@ -96,7 +82,6 @@ public class DriveTrain extends Subsystem {
     public void gyroStraight(double speed){
     	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
     	imuStatus = (imu.GetState() != PigeonState.NoComm);
-    	
      	angle=imu.GetFusedHeading(fusionStatus);
      	
     	error=(angle-setpoint);

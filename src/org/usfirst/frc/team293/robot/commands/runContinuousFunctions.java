@@ -5,6 +5,7 @@ import org.usfirst.frc.team293.robot.subsystems.LEDs;
 import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class runContinuousFunctions extends Command {
 
@@ -16,6 +17,7 @@ public class runContinuousFunctions extends Command {
 	    }
 	protected void execute(){
 		Robot.ContinuousFunctions.currentMonitor();
+		SmartDashboard.putBoolean("Has Gear", Robot.gearPouch.hasGear());
 	}
 	
 	public void sendLEDCode(){

@@ -1,8 +1,8 @@
 package org.usfirst.frc.team293.robot;
 
+import org.usfirst.frc.team293.robot.commands.ClimberDown;
 import org.usfirst.frc.team293.robot.commands.ClimberOff;
 import org.usfirst.frc.team293.robot.commands.ClimberUp;
-import org.usfirst.frc.team293.robot.commands.DriveReverse;
 import org.usfirst.frc.team293.robot.commands.FeederFoward;
 import org.usfirst.frc.team293.robot.commands.FeederStop;
 import org.usfirst.frc.team293.robot.commands.GearFlapDown;
@@ -10,6 +10,7 @@ import org.usfirst.frc.team293.robot.commands.GearFlapUp;
 import org.usfirst.frc.team293.robot.commands.ShooterHighGoal;
 import org.usfirst.frc.team293.robot.commands.ShooterLowGoal;
 import org.usfirst.frc.team293.robot.commands.ShooterStop;
+import org.usfirst.frc.team293.robot.commands.TankDriveReverse;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -116,8 +117,10 @@ public class OI {
 	 public static Joystick launchpad2=new Joystick(3);
 	 boolean winchactive;
 	public OI() {
-		JoystickButton leftTrigger=new JoystickButton(leftStick,2);
-		JoystickButton rightTrigger=new JoystickButton(rightStick,2);		
+		JoystickButton leftTrigger=new JoystickButton(leftStick,1);
+		JoystickButton rightTrigger=new JoystickButton(rightStick,1);	
+		JoystickButton leftTwo=new JoystickButton(leftStick,2);
+		JoystickButton rightTwo=new JoystickButton(rightStick,2);
 		JoystickButton leftThree=new JoystickButton(leftStick,3);
 		JoystickButton rightThree=new JoystickButton(rightStick,3);
 		
@@ -134,6 +137,8 @@ public class OI {
 		
 		JoystickButton twoWaySwitch=new JoystickButton(launchpad,11);
 		
+		padOne.toggleWhenPressed(new ClimberUp());
+		padTwo.toggleWhenPressed(new ClimberDown());
 		twoWaySwitch.whenPressed(new FeederFoward());
 		twoWaySwitch.whenReleased(new FeederStop());
 		//padThree.whenPressed(new ShooterHighGoal());
@@ -141,11 +146,14 @@ public class OI {
 		padEight.whenPressed(new GearFlapDown());
 		padNine.toggleWhenPressed(new ClimberUp());
 		
-		leftThree.toggleWhenPressed(new ShooterHighGoal());
-		rightThree.toggleWhenPressed(new ShooterStop());
+		leftTwo.whenPressed(new FeederFoward());
+		rightTwo.whenPressed(new FeederStop());
 		
-		leftTrigger.whenPressed(new DriveReverse());
-		rightTrigger.whenPressed(new DriveReverse());
+		leftThree.whenPressed(new ShooterHighGoal());
+		rightThree.whenPressed(new ShooterStop());
+		
+		leftTrigger.toggleWhenPressed(new TankDriveReverse());
+		rightTrigger.toggleWhenPressed(new TankDriveReverse());
 	}
 }
 

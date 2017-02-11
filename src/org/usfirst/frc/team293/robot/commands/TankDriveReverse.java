@@ -1,5 +1,6 @@
 package org.usfirst.frc.team293.robot.commands;
 
+import org.usfirst.frc.team293.robot.OI;
 import org.usfirst.frc.team293.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -7,29 +8,26 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class DriveReverse extends Command {
-	boolean blah;
-    public DriveReverse() {
+public class TankDriveReverse extends Command {
+
+    public TankDriveReverse() {
         // Use requires() here to declare subsystem dependencies
+        // eg. requires(chassis);
     	requires(Robot.driveTrain);
-    	blah=false;
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	System.out.print("blah");
-    	//Robot.driveTrain.reverseDrive();  //switches directions  	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.reverseDrive(); 
-    	blah=true;
+    	Robot.driveTrain.reverseDrive(OI.leftStick.getY(),OI.rightStick.getY());
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return blah;
+        return false;
     }
 
     // Called once after isFinished returns true

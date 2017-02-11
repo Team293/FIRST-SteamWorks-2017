@@ -13,7 +13,7 @@ public class GearPouch extends Subsystem {
     
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-	//DigitalInput hasGearButton;	//removed for now
+	DigitalInput hasGearButton;	//removed for now
 	Servo gearServo1;
 	Servo gearServo2;
 	final int MIN_ANGLE = 50;
@@ -21,7 +21,7 @@ public class GearPouch extends Subsystem {
 
 	
 	public GearPouch(){
-    	//hasGearButton = new DigitalInput(RobotMap.limitGear);	//removed for now
+    	hasGearButton = new DigitalInput(RobotMap.limitGear);	//removed for now
     	gearServo1 = new Servo(RobotMap.flapServo[0]);
     	gearServo2 = new Servo(RobotMap.flapServo[1]);
 	}
@@ -31,9 +31,9 @@ public class GearPouch extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
-    //public boolean hasGear(){		//removed for now
-    //	return hasGearButton.get();
-    //}
+    public boolean hasGear(){		//removed for now
+    	return hasGearButton.get();
+    }
     
     public void closeFlap() {
     	gearServo1.setAngle(MIN_ANGLE);

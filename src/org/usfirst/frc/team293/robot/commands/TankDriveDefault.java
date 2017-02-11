@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class DefaultTankDrive extends Command {
+public class TankDriveDefault extends Command {
 
-    public DefaultTankDrive() {
+    public TankDriveDefault() {
     	requires(Robot.driveTrain);// Use requires() here to declare subsystem dependencies
     }
 
