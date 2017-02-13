@@ -16,8 +16,6 @@ public class GearPouch extends Subsystem {
 	DigitalInput hasGearButton;	//removed for now
 	Servo gearServo1;
 	Servo gearServo2;
-	final int MIN_ANGLE = 50;
-	final int MAX_ANGLE = 140;
 
 	
 	public GearPouch(){
@@ -35,13 +33,13 @@ public class GearPouch extends Subsystem {
     	return hasGearButton.get();
     }
     
-    public void closeFlap() {
-    	gearServo1.setAngle(MIN_ANGLE);
-    	gearServo2.setAngle(-MIN_ANGLE);
+    public void upFlap() {
+    	gearServo1.set(.265);
+    	gearServo2.set(.76);
     }
-    public void openFlap() {
-    	gearServo1.setAngle(MAX_ANGLE);
-    	gearServo2.setAngle(-MAX_ANGLE);
+    public void downFlap() {
+    	gearServo1.set(.701);
+    	gearServo2.set(.27);
     }
     public void disableFlap() {
     	gearServo1.setDisabled();

@@ -7,10 +7,12 @@ import org.usfirst.frc.team293.robot.commands.FeederFoward;
 import org.usfirst.frc.team293.robot.commands.FeederStop;
 import org.usfirst.frc.team293.robot.commands.GearFlapDown;
 import org.usfirst.frc.team293.robot.commands.GearFlapUp;
+import org.usfirst.frc.team293.robot.commands.Light;
 import org.usfirst.frc.team293.robot.commands.ShooterHighGoal;
 import org.usfirst.frc.team293.robot.commands.ShooterLowGoal;
 import org.usfirst.frc.team293.robot.commands.ShooterStop;
 import org.usfirst.frc.team293.robot.commands.TankDriveReverse;
+import org.usfirst.frc.team293.robot.subsystems.LEDButton;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -115,7 +117,18 @@ public class OI {
 	 public static Joystick rightStick=new Joystick(1);
 	 public static Joystick launchpad=new Joystick(2);
 	 public static Joystick launchpad2=new Joystick(3);
-	 boolean winchactive;
+	 
+	 public static LEDButton LEDOne = new LEDButton(RobotMap.pad1[1]);
+	 public static LEDButton LEDTwo = new LEDButton(RobotMap.pad2[1]);
+	 public static LEDButton LEDThree = new LEDButton(RobotMap.pad3[1]);
+	 public static LEDButton LEDFour = new LEDButton(RobotMap.pad4[1]);
+	 public static LEDButton LEDFive = new LEDButton(RobotMap.pad5[1]);
+	 public static LEDButton LEDSix = new LEDButton(RobotMap.pad6[1]);
+	 public static LEDButton LEDSeven = new LEDButton(RobotMap.pad7[1]);
+	 public static LEDButton LEDEight = new LEDButton(RobotMap.pad8[1]);
+	 public static LEDButton LEDNine = new LEDButton(RobotMap.pad9[1]);
+		
+
 	public OI() {
 		JoystickButton leftTrigger=new JoystickButton(leftStick,1);
 		JoystickButton rightTrigger=new JoystickButton(rightStick,1);	
@@ -125,20 +138,23 @@ public class OI {
 		JoystickButton rightThree=new JoystickButton(rightStick,3);
 		
 		
-		JoystickButton padOne=new JoystickButton(launchpad,1);		//These are numbered top down, left to right
-		JoystickButton padTwo=new JoystickButton(launchpad,6);
-		JoystickButton padThree=new JoystickButton(launchpad,8);
-		JoystickButton padFour=new JoystickButton(launchpad,10);
-		JoystickButton padFive=new JoystickButton(launchpad,11);
-		JoystickButton padSix=new JoystickButton(launchpad,2);
-		JoystickButton padSeven=new JoystickButton(launchpad,3);
-		JoystickButton padEight=new JoystickButton(launchpad,5);
-		JoystickButton padNine=new JoystickButton(launchpad,4);
+		JoystickButton padOne=new JoystickButton(launchpad,RobotMap.pad1[0]);		//These are numbered top down, left to right
+		JoystickButton padTwo=new JoystickButton(launchpad,RobotMap.pad2[0]);
+		JoystickButton padThree=new JoystickButton(launchpad,RobotMap.pad3[0]);
+		JoystickButton padFour=new JoystickButton(launchpad,RobotMap.pad4[0]);
+		JoystickButton padFive=new JoystickButton(launchpad,RobotMap.pad5[0]);
+		JoystickButton padSix=new JoystickButton(launchpad,RobotMap.pad6[0]);
+		JoystickButton padSeven=new JoystickButton(launchpad,RobotMap.pad7[0]);
+		JoystickButton padEight=new JoystickButton(launchpad,RobotMap.pad8[0]);
+		JoystickButton padNine=new JoystickButton(launchpad,RobotMap.pad9[0]);
+		
+		
 		
 		JoystickButton twoWaySwitch=new JoystickButton(launchpad,11);
 		
 		padOne.toggleWhenPressed(new ClimberUp());
 		padTwo.toggleWhenPressed(new ClimberDown());
+		padThree.toggleWhenPressed(new Light());
 		twoWaySwitch.whenPressed(new FeederFoward());
 		twoWaySwitch.whenReleased(new FeederStop());
 		//padThree.whenPressed(new ShooterHighGoal());

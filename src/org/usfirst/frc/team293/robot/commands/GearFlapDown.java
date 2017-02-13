@@ -22,7 +22,7 @@ public class GearFlapDown extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.gearPouch.closeFlap();
+    	Robot.gearPouch.downFlap();
     }
 
     // Called repeatedly when this Command is scheduled to run
