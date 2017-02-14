@@ -4,6 +4,8 @@ import org.usfirst.frc.team293.robot.Robot;
 import org.usfirst.frc.team293.robot.RobotMap;
 import org.usfirst.frc.team293.robot.commands.runContinuousFunctions;
 
+import com.ctre.PigeonImu;
+
 import edu.wpi.first.wpilibj.PowerDistributionPanel;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -27,6 +29,7 @@ public class ContinuousFunctions extends Subsystem {
 	}
 	
 	public void currentMonitor(){
+		
 		
 		SmartDashboard.putBoolean("Drive Direction", Robot.driveTrain.forward);
 		

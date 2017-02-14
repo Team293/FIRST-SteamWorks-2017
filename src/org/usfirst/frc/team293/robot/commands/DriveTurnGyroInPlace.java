@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class DriveTurnGyroInPlace extends Command {
 	double angle, rate;
-	boolean isFinished;
+	boolean isFinished=false;
     public DriveTurnGyroInPlace(double angles, double rates) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);

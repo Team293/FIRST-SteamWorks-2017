@@ -23,13 +23,13 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 public class DriveTrain extends Subsystem {
 	private SpeedController leftMotorOne, leftMotorTwo, leftMotorThree, rightMotorOne, rightMotorTwo, rightMotorThree;
 
-	private PigeonImu imu;
+	public PigeonImu imu;
 	private RobotDrive drive;
 	private Encoder leftEncoder, rightEncoder;
 	public boolean reverseDirection=false;
 	
 	double finalPower=.5;
-	double pValue=-1.75;
+	double pValue=.05;
 	double dValue=-0;
 	double previousError=0;
 	double error;
@@ -55,10 +55,10 @@ public class DriveTrain extends Subsystem {
     	
 		drive = new RobotDrive(leftMotorOne, leftMotorTwo, rightMotorOne, rightMotorTwo);	
 		
-		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.rightEncoder[1],true, EncodingType.k4X);	//creates encoder with fast sampling and true or false for direction
-		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.leftEncoder[1],false, EncodingType.k4X);
+		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.leftEncoder[1],true, EncodingType.k4X);	//creates encoder with fast sampling and true or false for direction
+		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.rightEncoder[1],false, EncodingType.k4X);
 		
-		leftEncoder.setDistancePerPulse(150);//the amount of ticks to ft...still have to find this from P
+		leftEncoder.setDistancePerPulse(256/(3.14*4));//the amount of ticks to ft...still have to find this from P
 	}
  
     public void initDefaultCommand() {       
@@ -77,20 +77,27 @@ public class DriveTrain extends Subsystem {
 //////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////
     public void resetGyro(){
     	imu.SetFusedHeading(0.0);
+    	turning=false;
+    	setpoint=0;
     }
     
     public void gyroStraight(double speed){
     	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
     	imuStatus = (imu.GetState() != PigeonState.NoComm);
+    	if (imuStatus){
      	angle=imu.GetFusedHeading(fusionStatus);
      	
     	error=(angle-setpoint);
         
         finalPower=speed+(error*pValue);
-        drive.tankDrive(speed,finalPower);
+        drive.tankDrive(-speed,-finalPower);
        // SmartDashboard.putNumber("gyroGetRate", gyro.getRate());
-        SmartDashboard.putNumber("GyroAngle", angle);
-        SmartDashboard.putNumber("offsetGyro", offsetGyro);    	
+        SmartDashboard.putNumber("Setpoint", setpoint);
+        SmartDashboard.putNumber("angleIMU", angle);    
+    	}
+    	else{
+    		tankdrive(speed,speed);
+    	}
     }
 
     public boolean gyroTurn(double speed, double angle, double rate){
@@ -106,21 +113,27 @@ public class DriveTrain extends Subsystem {
         	turning=true;
         }
         
+        SmartDashboard.putNumber("Setpoint", setpoint);
+        SmartDashboard.putNumber("angleIMU", angle);
+        
         return turning;
     }
     
-    public boolean gyroTurnInPlace(double angle, double rate){
+    public boolean gyroTurnInPlace(double setangle, double rate){
     	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
     	angle=imu.GetFusedHeading(fusionStatus); ///Gets the angle
     	setpoint+=rate;  //adds the rate into the setpoint to gradually change it
     	error=(angle-setpoint); //finds how far you are off from the setpoint
         
         finalPower=(error*pValue);
-        drive.tankDrive(-finalPower,finalPower);
-        if (Math.abs(setpoint)>=Math.abs(angle)){
+        drive.tankDrive(finalPower,-finalPower);
+        if (angle>=setangle){
         	turning=true;
         }
         
+        SmartDashboard.putNumber("Setpoint", setpoint);
+        SmartDashboard.putNumber("angleIMU", angle);
+        SmartDashboard.putBoolean("Turninininin", turning);
         return turning;
     }
   //////////// ^Gyro Stuff  Encoder stuff--->>>  
@@ -131,8 +144,8 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double[] readEnc(){
-		double leftDistance= leftEncoder.getDistance();
-		double rightDistance=rightEncoder.getDistance();
+		double leftDistance= leftEncoder.get();
+		double rightDistance=rightEncoder.get();
 		double[] encoders= {(leftDistance+rightDistance)/2,leftDistance, rightDistance};
 		return encoders;
 	}
