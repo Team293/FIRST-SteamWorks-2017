@@ -16,11 +16,16 @@ public class CombClimber extends Subsystem {
 	
 	public CombClimber(){
 		climber =new CANTalon(RobotMap.climber);	
-		climbertwo=new CANTalon(0);
+		//climbertwo=new CANTalon(RobotMap.climbertwo);
 		climber.changeControlMode(TalonControlMode.PercentVbus);
 		climber.enableBrakeMode(true);
+		//climbertwo.enableBrakeMode(true);
+		
 		climber.EnableCurrentLimit(true);
-		climber.setCurrentLimit(38);
+		climber.setCurrentLimit(78);
+		
+		//climbertwo.EnableCurrentLimit(true);
+		//climbertwo.setCurrentLimit(38);
 	}
 	
     public void initDefaultCommand() {
@@ -28,17 +33,17 @@ public class CombClimber extends Subsystem {
     
     public void start(){
     	climber.set(1);  
-    	climbertwo.set(1);
+    	//climbertwo.set(1);
     }
     
     public void reverse(){	//may need to be removed
     	climber.set(-.4);
-    	climbertwo.set(-.4);
+    	//climbertwo.set(-.4);
     }
     
     public void stop(){
     	climber.set(0); 	
-    	climbertwo.set(0);
+    	//climbertwo.set(0);
     }
 }
 
