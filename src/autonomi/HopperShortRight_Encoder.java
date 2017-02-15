@@ -16,8 +16,8 @@ public class HopperShortRight_Encoder extends CommandGroup {
 	approach the goal. This should be possible if our teammates don't do the same thing.*/
     public  HopperShortRight_Encoder() {
     	addParallel(new GearFlapDown());
-    	addSequential(new DriveStraightGyroEncoder(96,.7));	//
-    	addSequential(new DriveTurnGyroInPlace(90, 2));
+    	addSequential(new DriveStraightGyroEncoder(96,.9));	//
+    	addSequential(new DriveTurnGyroInPlace(-90, -.5));
     	addSequential(new DriveStraightGyroEncoder(60, .7));
     	// Add Commands here:
         // e.g. addSequential(new Command1());

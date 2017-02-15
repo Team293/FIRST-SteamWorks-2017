@@ -17,7 +17,7 @@ public class HopperLongRight_Encoder extends CommandGroup {
     public  HopperLongRight_Encoder() {
     	addParallel(new GearFlapDown());
     	addSequential(new DriveStraightGyroEncoder(187,.7));	//
-    	addSequential(new DriveTurnGyroInPlace(90, 2));
+    	addSequential(new DriveTurnGyroInPlace(-90, -2));
     	addSequential(new DriveStraightGyroEncoder(60, .7));
     	// Add Commands here:
         // e.g. addSequential(new Command1());

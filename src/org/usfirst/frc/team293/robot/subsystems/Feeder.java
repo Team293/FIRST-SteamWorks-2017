@@ -24,11 +24,11 @@ public class Feeder extends Subsystem {
     }
 
     public void runForward(){
-    	feederMotor.set(-1);
+    	feederMotor.set(1);
     }
     
     public void runBackward(){
-    	feederMotor.set(1);
+    	feederMotor.set(-1);
     }
     
     public void stop(){

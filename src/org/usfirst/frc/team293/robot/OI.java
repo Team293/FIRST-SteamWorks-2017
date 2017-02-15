@@ -130,7 +130,7 @@ public class OI {
 		
 
 	public OI() {
-		JoystickButton[] left= {new JoystickButton(leftStick,1), 
+		JoystickButton[] left= {null,new JoystickButton(leftStick,1), 
 									   new JoystickButton(leftStick,2), 
 									   new JoystickButton(leftStick,3), 
 									   new JoystickButton(leftStick,4), 
@@ -141,7 +141,7 @@ public class OI {
 									   new JoystickButton(leftStick,9), 
 									   new JoystickButton(leftStick,10),};
 		
-		JoystickButton[] right= {new JoystickButton(rightStick,1), 
+		JoystickButton[] right= {null,new JoystickButton(rightStick,1), 
 				   new JoystickButton(rightStick,2), 
 				   new JoystickButton(rightStick,3), 
 				   new JoystickButton(rightStick,4), 
@@ -175,7 +175,6 @@ public class OI {
 		//padThree.whenPressed(new ShooterHighGoal());
 		padSix.whenPressed(new GearFlapUp());
 		padEight.whenPressed(new GearFlapDown());
-		padNine.toggleWhenPressed(new ClimberUp());
 		
 		left[2].whenPressed(new FeederFoward());
 		right[2].whenPressed(new FeederStop());

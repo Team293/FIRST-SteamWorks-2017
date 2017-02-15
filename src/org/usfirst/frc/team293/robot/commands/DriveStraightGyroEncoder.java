@@ -22,19 +22,25 @@ public class DriveStraightGyroEncoder extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.resetGyro();
-    	//Robot.driveTrain.resetEnc();
+    	Robot.driveTrain.resetEnc();
     	SmartDashboard.putString("CurrentCommand","DriveStriaghtGyroEncoder");
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.gyroStraight(speed);
-    	SmartDashboard.putNumber("Encoder", Robot.driveTrain.readEnc()[1]);
+    	if(distance-Robot.driveTrain.readEnc()[0]>25){
+    		Robot.driveTrain.gyroStraight(speed);
+    	}
+    	else{
+    		Robot.driveTrain.gyroStraight(-.1);
+    	}
+    	
+    	SmartDashboard.putNumber("Encoder", Robot.driveTrain.readEnc()[0]);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {  	
-    	return (distance<=Robot.driveTrain.readEnc()[1]);
+    	return (distance<=Robot.driveTrain.readEnc()[0]);
     }
 
     // Called once after isFinished returns true

@@ -13,7 +13,7 @@ public class ForwardDrive extends Command {
 	
     public ForwardDrive() {
         requires(Robot.driveTrain);
-    	setTimeout(4);
+    	setTimeout(4.5);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +22,7 @@ public class ForwardDrive extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
+    	Robot.driveTrain.tankdrive(.5, .5);
     }
 
     // Make this return true when this Command no longer needs to run execute()

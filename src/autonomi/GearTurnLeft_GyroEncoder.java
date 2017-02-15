@@ -11,7 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GearTurnLeft_GyroEncoder extends CommandGroup {
     
     public  GearTurnLeft_GyroEncoder() {
-    	//addSequential(new DriveStraightGyro(120,.5));//distance and speed
-    	addSequential(new DriveTurnGyroInPlace(45,.4));	//angle, rate
+    	addSequential(new DriveStraightGyro(120,.5));//distance and speed
+    	addSequential(new DriveTurnGyroInPlace(60,.6));	//angle, rate
     }
 }

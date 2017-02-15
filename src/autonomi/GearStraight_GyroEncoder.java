@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GearStraight_GyroEncoder extends CommandGroup {
     //So this distance is 9.5 ft...but the robot is 36 inches so that makes the distance the front needs to go 6.5 ft
     public  GearStraight_GyroEncoder() {
-    	addSequential(new DriveStraightGyroEncoder(88,.3));
+    	addSequential(new DriveStraightGyroEncoder(88,.3));	//real is 88
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

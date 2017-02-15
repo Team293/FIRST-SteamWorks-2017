@@ -55,8 +55,8 @@ public class DriveTrain extends Subsystem {
     	
 		drive = new RobotDrive(leftMotorOne, leftMotorTwo, rightMotorOne, rightMotorTwo);	
 		
-		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.leftEncoder[1],true, EncodingType.k4X);	//creates encoder with fast sampling and true or false for direction
-		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.rightEncoder[1],false, EncodingType.k4X);
+		leftEncoder= new Encoder(RobotMap.leftEncoder[0],RobotMap.leftEncoder[1]);	//creates encoder with fast sampling and true or false for direction
+		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.rightEncoder[1]);
 		
 		leftEncoder.setDistancePerPulse(256/(3.14*4));//the amount of ticks to ft...still have to find this from P
 	}
@@ -72,6 +72,13 @@ public class DriveTrain extends Subsystem {
     
     public void reverseDrive(double left, double right){								//Switch Direction we're going
     	drive.tankDrive(-right,-left);
+    }
+    
+    public void squaredTankDrive(double left, double right){
+    	drive.tankDrive(left, right,true);
+    }
+    public void squaredReverseTankDrive(double left, double right){
+    	drive.tankDrive(-left, -right,true);
     }
    
 //////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////
@@ -127,7 +134,7 @@ public class DriveTrain extends Subsystem {
         
         finalPower=(error*pValue);
         drive.tankDrive(finalPower,-finalPower);
-        if (angle>=setangle){
+        if (Math.abs(angle)>=Math.abs(setangle)){
         	turning=true;
         }
         
@@ -144,8 +151,8 @@ public class DriveTrain extends Subsystem {
 	}
 	
 	public double[] readEnc(){
-		double leftDistance= leftEncoder.get();
-		double rightDistance=rightEncoder.get();
+		double leftDistance= Math.abs((leftEncoder.getRaw()*3.14*4)/1024);
+		double rightDistance=Math.abs((rightEncoder.getRaw()*3.14*4)/1024);
 		double[] encoders= {(leftDistance+rightDistance)/2,leftDistance, rightDistance};
 		return encoders;
 	}

@@ -22,8 +22,6 @@ public class CombClimber extends Subsystem {
 		//climbertwo.enableBrakeMode(true);
 		
 		climber.EnableCurrentLimit(true);
-		climber.setCurrentLimit(78);
-		
 		//climbertwo.EnableCurrentLimit(true);
 		//climbertwo.setCurrentLimit(38);
 	}
@@ -32,12 +30,12 @@ public class CombClimber extends Subsystem {
     }
     
     public void start(){
-    	climber.set(1);  
+    	climber.set(-1);  
     	//climbertwo.set(1);
     }
     
     public void reverse(){	//may need to be removed
-    	climber.set(-.4);
+    	climber.set(.4);
     	//climbertwo.set(-.4);
     }
     
