@@ -25,7 +25,7 @@ public class DriveTrain extends Subsystem {
 
 	public PigeonImu imu;
 	private RobotDrive drive;
-	private Encoder leftEncoder, rightEncoder;
+	public Encoder leftEncoder, rightEncoder;
 	public boolean reverseDirection=false;
 	
 	double finalPower=.5;
@@ -79,6 +79,12 @@ public class DriveTrain extends Subsystem {
     }
     public void squaredReverseTankDrive(double left, double right){
     	drive.tankDrive(-left, -right,true);
+    }
+    public void encoderDrive(double leftRateSetpoint,double rightRateSetpoint){
+    	double leftRate=leftEncoder.getRate();
+    	double rightRate=-leftEncoder.getRate();
+    	
+    	drive.tankDrive((leftRateSetpoint-leftRate)*0.05 , (rightRateSetpoint-rightRate)*0.05);
     }
    
 //////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////

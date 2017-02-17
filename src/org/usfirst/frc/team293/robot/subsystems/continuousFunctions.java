@@ -32,6 +32,9 @@ public class ContinuousFunctions extends Subsystem {
 		
 		
 		SmartDashboard.putBoolean("Drive Direction", Robot.driveTrain.forward);
+		SmartDashboard.putNumber("Encoder Rate left", Robot.driveTrain.leftEncoder.getRate());
+		SmartDashboard.putNumber("Encoder Rate right", Robot.driveTrain.rightEncoder.getRate());
+
 		
 		SmartDashboard.putNumber("Total Current", pdp.getTotalCurrent());
 		SmartDashboard.putNumber("DriveTrain Current", pdp.getCurrent(RobotMap.pdpLeftDrive[0])+pdp.getCurrent(RobotMap.pdpLeftDrive[1])+pdp.getCurrent(RobotMap.pdpLeftDrive[2])+pdp.getCurrent(RobotMap.pdpRightDrive[0])+pdp.getCurrent(RobotMap.pdpRightDrive[1])+pdp.getCurrent(RobotMap.pdpRightDrive[2]));
