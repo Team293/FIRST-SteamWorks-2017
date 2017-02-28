@@ -12,7 +12,7 @@ public class FeederFoward extends Command {
 		requires(Robot.feeder);
 	}
 	protected void initialize(){
-		Robot.lEDs.sendData(Robot.lEDs.orangeSolid);
+		Robot.lEDs.sendData(Robot.lEDs.whenFeeding);
 		SmartDashboard.putBoolean("Feeder Moving?", true);
 	}
 	

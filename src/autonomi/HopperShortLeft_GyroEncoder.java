@@ -2,6 +2,7 @@ package autonomi;
 
 import org.usfirst.frc.team293.robot.commands.DriveStraightGyro;
 import org.usfirst.frc.team293.robot.commands.DriveStraightGyroEncoder;
+import org.usfirst.frc.team293.robot.commands.DriveStraightGyroVelocity;
 import org.usfirst.frc.team293.robot.commands.DriveTurnGyroInPlace;
 import org.usfirst.frc.team293.robot.commands.GearFlapDown;
 import org.usfirst.frc.team293.robot.commands.ShooterHighGoal;
@@ -16,9 +17,9 @@ public class HopperShortLeft_GyroEncoder extends CommandGroup {
 	approach the goal. This should be possible if our teammates don't do the same thing.*/
     public  HopperShortLeft_GyroEncoder() {
     	addParallel(new GearFlapDown());
-    	addSequential(new DriveStraightGyroEncoder(96,.7));
-    	addSequential(new DriveTurnGyroInPlace(90, 2));
-    	addSequential(new DriveStraightGyroEncoder(60, .7));
+    	addSequential(new DriveStraightGyroVelocity(.7,96,false));
+    	addSequential(new DriveTurnGyroInPlace(90, .6));
+    	addSequential(new DriveStraightGyroVelocity(.7,60,true));
     	// Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

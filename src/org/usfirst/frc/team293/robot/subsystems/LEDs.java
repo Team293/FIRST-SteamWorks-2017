@@ -8,16 +8,23 @@ public class LEDs {
 	
 	SerialPort port;
 	public String rainbow="0",
-					blueChasing="255",
-					redChasing="254",
-					orangeChasing="253",
-					orangeSolid="252",
-					redSolid="251",
-					yellowSolid="250",
-					greenSolid="249",
-					whiteSolid="0",
-					purpleSolid="1",
-					blueFlashing="2";
+			
+					blueChasing="155",	//for Auto
+					redChasing="154",	//for Auto
+
+					
+					needGear="150", //yellowFlashing
+					haveGear= "151", //yellow Solid
+					readyBalls="152", //orange Solid
+							
+					whenFeeding="153",//orange chasing
+					whenShooting="154", //red Chasing
+					
+					timeWarning="200",// purple solid		
+					climbing="201";  //purpleFlashing
+					
+					//goForward="0",//drivetrain direction
+					//goBackwards="1";
 				  
 	public LEDs(){			//initializes the Serial Port
 		port= new SerialPort(9600, Port.kMXP);

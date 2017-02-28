@@ -59,6 +59,10 @@ public class DriveTrain extends Subsystem {
 		rightEncoder= new Encoder(RobotMap.rightEncoder[0],RobotMap.rightEncoder[1]);
 		
 		leftEncoder.setDistancePerPulse(256/(3.14*4));//the amount of ticks to ft...still have to find this from P
+		rightEncoder.setDistancePerPulse(256/(3.14*4));//the amount of ticks to ft...still have to find this from P
+		
+		leftEncoder.setSamplesToAverage(30);
+		rightEncoder.setSamplesToAverage(30);
 	}
  
     public void initDefaultCommand() {       
@@ -80,18 +84,57 @@ public class DriveTrain extends Subsystem {
     public void squaredReverseTankDrive(double left, double right){
     	drive.tankDrive(-left, -right,true);
     }
-    public void encoderDrive(double leftRateSetpoint,double rightRateSetpoint){
-    	double leftRate=leftEncoder.getRate();
-    	double rightRate=-leftEncoder.getRate();
+    
+    
+    public void encoderDrive(double leftStick ,double rightStick){
+    	double leftRate=leftEncoder.getRate()/1000;
+    	double rightRate=-rightEncoder.getRate()/1000;
     	
-    	drive.tankDrive((leftRateSetpoint-leftRate)*0.05 , (rightRateSetpoint-rightRate)*0.05);
+    	double leftRateSetpoint=-leftStick*125;
+    	double rightRateSetpoint=-rightStick*125;
+
+    	drive.tankDrive(-(leftRateSetpoint-rightRate)*0.016,-(rightRateSetpoint-leftRate)*0.016);
+    	
+    	SmartDashboard.putNumber("leftRateSetpoint", leftRateSetpoint);
+    	SmartDashboard.putNumber("rightRateSetpoint",rightRateSetpoint);
+    	
+    	
+    	SmartDashboard.putNumber("left PowerPoint", -(50-rightRate)*0.0033);
+    	SmartDashboard.putNumber("right PowerPoint", -(50-leftRate)*0.0033);
+    	
     }
-   
 //////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////
+    
+    public void velocityStraight(double speed){	///NOT DONE YET speed=-1,1 
+    	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
+    	angle=imu.GetFusedHeading(fusionStatus);
+     	
+    	error=(angle-setpoint);
+    	
+    	double leftRate=(leftEncoder.getRate()/1000);
+    	double rightRate=(-rightEncoder.getRate()/1000);
+    	
+    	double leftRateSetpoint=speed*130;
+    	double rightRateSetpoint=speed*130;
+
+    	drive.tankDrive(-(leftRateSetpoint-rightRate)*0.015+angle*.01,-(rightRateSetpoint-leftRate)*0.015-angle*.01);
+    	
+    	SmartDashboard.putNumber("leftRateSetpoint", leftRateSetpoint);
+    	SmartDashboard.putNumber("rightRateSetpoint",rightRateSetpoint);
+    	
+    	
+    	SmartDashboard.putNumber("left PowerPoint", -(50-rightRate)*0.003);
+    	SmartDashboard.putNumber("right PowerPoint", -(50-leftRate)*0.003);
+    	
+    }
+    
     public void resetGyro(){
     	imu.SetFusedHeading(0.0);
+    	imu.SetYaw(0);
     	turning=false;
     	setpoint=0;
+    	error=0;
+    	angle=0;
     }
     
     public void gyroStraight(double speed){
@@ -133,6 +176,7 @@ public class DriveTrain extends Subsystem {
     }
     
     public boolean gyroTurnInPlace(double setangle, double rate){
+    	turning=false;
     	PigeonImu.FusionStatus fusionStatus = new PigeonImu.FusionStatus();
     	angle=imu.GetFusedHeading(fusionStatus); ///Gets the angle
     	setpoint+=rate;  //adds the rate into the setpoint to gradually change it
@@ -149,6 +193,10 @@ public class DriveTrain extends Subsystem {
         SmartDashboard.putBoolean("Turninininin", turning);
         return turning;
     }
+    
+   
+    
+    
   //////////// ^Gyro Stuff  Encoder stuff--->>>  
     
 	public void resetEnc(){

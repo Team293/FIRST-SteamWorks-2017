@@ -18,7 +18,7 @@ public class ClimberUp extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.Climber.start();
-    	Robot.lEDs.sendData(Robot.lEDs.rainbow);
+    	Robot.lEDs.sendData(Robot.lEDs.climbing);
     	SmartDashboard.putBoolean("Climbing?", true);
     }
 

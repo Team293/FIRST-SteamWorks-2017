@@ -35,7 +35,7 @@ public class CombClimber extends Subsystem {
     }
     
     public void reverse(){	//may need to be removed
-    	climber.set(.4);
+    	climber.set(.5);
     	//climbertwo.set(-.4);
     }
     

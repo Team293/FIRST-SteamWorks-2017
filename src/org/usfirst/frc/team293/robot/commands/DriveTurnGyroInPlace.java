@@ -2,7 +2,9 @@ package org.usfirst.frc.team293.robot.commands;
 
 import org.usfirst.frc.team293.robot.Robot;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -16,10 +18,12 @@ public class DriveTurnGyroInPlace extends Command {
     	requires(Robot.driveTrain);
     	angle=angles;
     	rate=rates;
+    	
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	SmartDashboard.putString("CurrentCommand","DriveTurnGyroInPlace");
     	Robot.driveTrain.resetEnc();
     	Robot.driveTrain.resetGyro();
     }

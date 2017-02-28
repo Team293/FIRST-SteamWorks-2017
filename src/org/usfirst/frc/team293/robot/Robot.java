@@ -92,7 +92,10 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Hopper left, Shoot *Sensors", new HopperShooterLeftHopper_GyroEncoder());
         
         SmartDashboard.putData("Auto mode Chooser", chooser);   
-    }
+        
+        
+        
+   }
     
     public void disabledInit(){
 
@@ -105,7 +108,7 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	color = DriverStation.getInstance().getAlliance();
-
+    	Robot.gearPouch.upFlap();
     	autonomousCommand = (Command) chooser.getSelected();
     	autonomousCommand.start();
     	if(color == DriverStation.Alliance.Blue){

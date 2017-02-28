@@ -1,36 +1,20 @@
 package autonomi;
 
-import edu.wpi.first.wpilibj.command.Command;
+import org.usfirst.frc.team293.robot.commands.DriveStraightGyroVelocity;
+import org.usfirst.frc.team293.robot.commands.DriveTurnGyroInPlace;
+import org.usfirst.frc.team293.robot.commands.ShooterHighGoal;
+
+import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class Shoot_Encoder extends Command {
+public class Shoot_Encoder extends CommandGroup {
 
     public Shoot_Encoder() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
-
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
-
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    }
-
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return false;
-    }
-
-    // Called once after isFinished returns true
-    protected void end() {
-    }
-
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
+    	addSequential(new DriveStraightGyroVelocity(.4,60,false));
+    	addSequential(new DriveTurnGyroInPlace(45,.6));	//angle, rate
+    	addSequential(new DriveStraightGyroVelocity(-.4,71,false));
+    	addSequential(new ShooterHighGoal());
     }
 }

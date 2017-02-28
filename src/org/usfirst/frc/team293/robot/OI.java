@@ -129,6 +129,7 @@ public class OI {
 	 public static LEDButton LEDNine = new LEDButton(RobotMap.pad9[1]);
 		
 
+
 	public OI() {
 		JoystickButton[] left= {null,new JoystickButton(leftStick,1), 
 									   new JoystickButton(leftStick,2), 
@@ -142,15 +143,15 @@ public class OI {
 									   new JoystickButton(leftStick,10),};
 		
 		JoystickButton[] right= {null,new JoystickButton(rightStick,1), 
-				   new JoystickButton(rightStick,2), 
-				   new JoystickButton(rightStick,3), 
-				   new JoystickButton(rightStick,4), 
-				   new JoystickButton(rightStick,5), 
-				   new JoystickButton(rightStick,6), 
-				   new JoystickButton(rightStick,7), 
-				   new JoystickButton(rightStick,8), 
-				   new JoystickButton(rightStick,9), 
-				   new JoystickButton(rightStick,10),};
+									   new JoystickButton(rightStick,2), 
+									   new JoystickButton(rightStick,3), 
+									   new JoystickButton(rightStick,4), 
+									   new JoystickButton(rightStick,5), 
+									   new JoystickButton(rightStick,6), 
+									   new JoystickButton(rightStick,7), 
+									   new JoystickButton(rightStick,8), 
+									   new JoystickButton(rightStick,9), 
+									   new JoystickButton(rightStick,10),};
 		
 		
 		JoystickButton padOne=new JoystickButton(launchpad,RobotMap.pad1[0]);		//These are numbered top down, left to right
@@ -172,9 +173,12 @@ public class OI {
 		padThree.toggleWhenPressed(new Light());
 		twoWaySwitch.whenPressed(new FeederFoward());
 		twoWaySwitch.whenReleased(new FeederStop());
-		//padThree.whenPressed(new ShooterHighGoal());
+		padThree.toggleWhenPressed(new ShooterHighGoal());
 		padSix.whenPressed(new GearFlapUp());
 		padEight.whenPressed(new GearFlapDown());
+		
+		left[1].toggleWhenPressed(new TankDriveReverse());
+		right[1].toggleWhenPressed(new TankDriveReverse());
 		
 		left[2].whenPressed(new FeederFoward());
 		right[2].whenPressed(new FeederStop());
@@ -185,13 +189,11 @@ public class OI {
 		left[4].whenPressed(new GearFlapUp());
 		right[4].whenPressed(new GearFlapDown());
 		
-		left[1].toggleWhenPressed(new TankDriveReverse());
-		right[1].toggleWhenPressed(new TankDriveReverse());
-		
 		left[8].toggleWhenPressed(new ClimberUp());
 		left[9].toggleWhenPressed(new ClimberDown());
 		right[8].toggleWhenPressed(new ClimberUp());
 		right[9].toggleWhenPressed(new ClimberDown());
+	
 	}
 }
 

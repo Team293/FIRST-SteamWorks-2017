@@ -38,7 +38,7 @@ public class Shooter extends Subsystem {
     public void ShootHigh(){
     	shooter.enableControl(); // Enable PID control on the talon
     	shooter.set(-1);
-    	shooterTrigger.set(-1);
+    	shooterTrigger.set(-.7);
     }
     
     public void ShootLow(){

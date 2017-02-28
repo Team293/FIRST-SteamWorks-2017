@@ -28,13 +28,7 @@ public class DriveStraightGyroEncoder extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if(distance-Robot.driveTrain.readEnc()[0]>25){
-    		Robot.driveTrain.gyroStraight(speed);
-    	}
-    	else{
-    		Robot.driveTrain.gyroStraight(-.1);
-    	}
-    	
+    	Robot.driveTrain.gyroStraight(speed);  	
     	SmartDashboard.putNumber("Encoder", Robot.driveTrain.readEnc()[0]);
     }
 

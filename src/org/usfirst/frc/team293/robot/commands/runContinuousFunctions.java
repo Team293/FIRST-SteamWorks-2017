@@ -17,6 +17,7 @@ public class runContinuousFunctions extends Command {
 	    }
 	protected void execute(){
 		Robot.ContinuousFunctions.currentMonitor();
+		Robot.ContinuousFunctions.sensorLog();
 		SmartDashboard.putBoolean("Has Gear", Robot.gearPouch.hasGear());
 	}
 	

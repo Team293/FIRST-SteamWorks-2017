@@ -34,12 +34,12 @@ public class GearPouch extends Subsystem {
     }
     
     public void upFlap() {
-    	gearServo1.set(.265);
-    	gearServo2.set(.76);
+    	gearServo1.set(.2);
+    	gearServo2.set(.8);
     }
     public void downFlap() {
-    	gearServo1.set(.701);
-    	gearServo2.set(.27);
+    	gearServo1.set(.48);
+    	gearServo2.set(.47);
     }
     public void disableFlap() {
     	gearServo1.setDisabled();
