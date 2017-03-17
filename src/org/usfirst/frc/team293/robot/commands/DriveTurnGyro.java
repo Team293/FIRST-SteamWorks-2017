@@ -22,7 +22,6 @@ public class DriveTurnGyro extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.driveTrain.resetGyro();
-    	SmartDashboard.putString("CurrentCommand","DriveTurnGyro");
     }
 
     // Called repeatedly when this Command is scheduled to run

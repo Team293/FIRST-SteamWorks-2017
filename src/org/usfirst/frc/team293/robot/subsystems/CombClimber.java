@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class CombClimber extends Subsystem {
 	
-	CANTalon climber, climbertwo;
+	public CANTalon climber, climbertwo;
 	
 	public CombClimber(){
 		climber =new CANTalon(RobotMap.climber);	
@@ -30,12 +30,16 @@ public class CombClimber extends Subsystem {
     }
     
     public void start(){
-    	climber.set(-1);  
+    	climber.set(1);  
     	//climbertwo.set(1);
     }
     
-    public void reverse(){	//may need to be removed
+    public void startSlow(){
     	climber.set(.5);
+    }
+
+    public void reverse(){	//may need to be removed
+    //	climber.set(.5);
     	//climbertwo.set(-.4);
     }
     

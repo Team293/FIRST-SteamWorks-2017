@@ -94,13 +94,7 @@ public class DriveTrain extends Subsystem {
     	double rightRateSetpoint=-rightStick*125;
 
     	drive.tankDrive(-(leftRateSetpoint-rightRate)*0.016,-(rightRateSetpoint-leftRate)*0.016);
-    	
-    	SmartDashboard.putNumber("leftRateSetpoint", leftRateSetpoint);
-    	SmartDashboard.putNumber("rightRateSetpoint",rightRateSetpoint);
-    	
-    	
-    	SmartDashboard.putNumber("left PowerPoint", -(50-rightRate)*0.0033);
-    	SmartDashboard.putNumber("right PowerPoint", -(50-leftRate)*0.0033);
+
     	
     }
 //////////////////////////////Gyro Stuff-->>>///////////////////////////////////////////////
@@ -118,13 +112,7 @@ public class DriveTrain extends Subsystem {
     	double rightRateSetpoint=speed*130;
 
     	drive.tankDrive(-(leftRateSetpoint-rightRate)*0.015+angle*.01,-(rightRateSetpoint-leftRate)*0.015-angle*.01);
-    	
-    	SmartDashboard.putNumber("leftRateSetpoint", leftRateSetpoint);
-    	SmartDashboard.putNumber("rightRateSetpoint",rightRateSetpoint);
-    	
-    	
-    	SmartDashboard.putNumber("left PowerPoint", -(50-rightRate)*0.003);
-    	SmartDashboard.putNumber("right PowerPoint", -(50-leftRate)*0.003);
+   
     	
     }
     
@@ -147,9 +135,7 @@ public class DriveTrain extends Subsystem {
         
         finalPower=speed+(error*pValue);
         drive.tankDrive(-speed,-finalPower);
-       // SmartDashboard.putNumber("gyroGetRate", gyro.getRate());
-        SmartDashboard.putNumber("Setpoint", setpoint);
-        SmartDashboard.putNumber("angleIMU", angle);    
+ 
     	}
     	else{
     		tankdrive(speed,speed);
@@ -169,8 +155,6 @@ public class DriveTrain extends Subsystem {
         	turning=true;
         }
         
-        SmartDashboard.putNumber("Setpoint", setpoint);
-        SmartDashboard.putNumber("angleIMU", angle);
         
         return turning;
     }
@@ -187,10 +171,7 @@ public class DriveTrain extends Subsystem {
         if (Math.abs(angle)>=Math.abs(setangle)){
         	turning=true;
         }
-        
-        SmartDashboard.putNumber("Setpoint", setpoint);
-        SmartDashboard.putNumber("angleIMU", angle);
-        SmartDashboard.putBoolean("Turninininin", turning);
+
         return turning;
     }
     

@@ -9,6 +9,7 @@ import com.ctre.CANTalon.TalonControlMode;
 import com.ctre.CANTalon.FeedbackDevice;
 
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 
@@ -17,10 +18,10 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class Shooter extends Subsystem {
 	CANTalon shooter;
-	Victor shooterTrigger;
+	VictorSP shooterTrigger;
 	public Shooter(){
 		shooter =new CANTalon(RobotMap.shooter);
-		shooterTrigger= new Victor(RobotMap.shooterTrigger);
+		shooterTrigger= new VictorSP(RobotMap.shooterTrigger);
 		
 		shooter.changeControlMode(TalonControlMode.PercentVbus);
 		shooter.setFeedbackDevice(FeedbackDevice.EncFalling);
@@ -38,14 +39,21 @@ public class Shooter extends Subsystem {
     public void ShootHigh(){
     	shooter.enableControl(); // Enable PID control on the talon
     	shooter.set(-1);
-    	shooterTrigger.set(-.7);
+    	shooterTrigger.set(-1);
     }
     
     public void ShootLow(){
     	//shooter.enableControl(); // Enable PID control on the talon
-    	shooterTrigger.set(-0.5);
-    	shooter.set(-0.5);
+    	shooterTrigger.set(-1);
+    	shooter.set(-1);
     }
+    
+    public void ShootLowReverse(){
+    	//shooter.enableControl(); // Enable PID control on the talon
+    	shooterTrigger.set(1);
+    	shooter.set(1);
+    }
+    
     
     public void Stop(){
     	shooterTrigger.set(0);

@@ -23,7 +23,6 @@ public class DriveTurnGyroInPlace extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	SmartDashboard.putString("CurrentCommand","DriveTurnGyroInPlace");
     	Robot.driveTrain.resetEnc();
     	Robot.driveTrain.resetGyro();
     }

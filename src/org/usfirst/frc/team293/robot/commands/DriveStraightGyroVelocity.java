@@ -30,13 +30,13 @@ public class DriveStraightGyroVelocity extends Command {
     protected void initialize() {
     	Robot.driveTrain.resetGyro();
     	Robot.driveTrain.resetEnc();
-    	SmartDashboard.putString("CurrentCommand","DriveStriaghtGyroVelocity");
     	timer.reset();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double encoder = Robot.driveTrain.readEnc()[0];
+    	SmartDashboard.putNumber("AutoStraightEncoder", encoder);
     	double distanceToGo=(distance-encoder);
     	
     	if(1<timer.get()){
@@ -52,7 +52,6 @@ public class DriveStraightGyroVelocity extends Command {
     		Robot.driveTrain.velocityStraight(speed*slowDownMultiplier);
     	}
     	
-    	SmartDashboard.putNumber("Encoder", Robot.driveTrain.readEnc()[0]);
     	
     }
 

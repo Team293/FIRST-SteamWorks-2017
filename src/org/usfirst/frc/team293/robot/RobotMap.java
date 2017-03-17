@@ -30,7 +30,7 @@ public class RobotMap {
 							leftDrive={2,3};
 							
 		public static int	ballFeeder=5,
-							shooterTrigger=6;
+							shooterTrigger=4;
 		public static int	visionServoPin = 7; //Pin for camera Servo						
 		public static int[]	flapServo={8,9}; 	//Flap Servo
 		

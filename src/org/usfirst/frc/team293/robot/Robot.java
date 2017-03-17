@@ -8,7 +8,6 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team293.robot.subsystems.Camera;
 import org.usfirst.frc.team293.robot.subsystems.CombClimber;
 import org.usfirst.frc.team293.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
@@ -29,7 +28,8 @@ import autonomi.HopperLongRight_Encoder;
 import autonomi.HopperShooterLeftHopper_GyroEncoder;
 import autonomi.HopperShortLeft_GyroEncoder;
 import autonomi.HopperShortRight_Encoder;
-import autonomi.Shoot_Encoder;
+import autonomi.Shoot_Left_Encoder;
+import autonomi.Shoot_Right_Encoder;
 import autonomi.Stand;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -45,7 +45,6 @@ public class Robot extends IterativeRobot {
 
 	
 	public static DriveTrain driveTrain;
-	public static Camera camera;
 	public static CombClimber Climber;
 	public static ContinuousFunctions ContinuousFunctions;
 	public static GearPouch gearPouch;
@@ -68,7 +67,6 @@ public class Robot extends IterativeRobot {
     	gearPouch=new GearPouch();
     	feeder = new Feeder();
     	driveTrain = new DriveTrain();
-    	camera = new Camera();
     	Climber=new CombClimber();
     	lEDs=new LEDs();
     	ContinuousFunctions=new ContinuousFunctions();
@@ -81,7 +79,8 @@ public class Robot extends IterativeRobot {
         chooser.addObject("Center Gear *Sensors", new GearStraight_GyroEncoder());
         chooser.addObject("Gear (turn left)  *Sensors", new GearTurnLeft_GyroEncoder());
         chooser.addObject("Gear (turn right) *Sensors", new GearTurnRight_GyroEncoder());
-        chooser.addObject("Shoot *Sensors",new Shoot_Encoder());
+        chooser.addObject("Shoot Right *Sensors",new Shoot_Right_Encoder());
+        chooser.addObject("Shoot Left *Sensors",new Shoot_Left_Encoder());
         chooser.addObject("Left Long Hopper *Sensors", new HopperLongLeft_GyroEncoder());
         chooser.addObject("Right Long Hopper *Sensors", new HopperLongRight_Encoder());
         chooser.addObject("Right Short Hopper *Sensors", new HopperShortRight_Encoder());
@@ -138,6 +137,7 @@ public class Robot extends IterativeRobot {
 
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();	//Gets out of Auto
+    	Robot.gearPouch.upFlap();
     }
 
     public void teleopPeriodic() {		//Operator Control

@@ -9,9 +9,9 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class Shoot_Encoder extends CommandGroup {
+public class Shoot_Right_Encoder extends CommandGroup {
 
-    public Shoot_Encoder() {
+    public Shoot_Right_Encoder() {
     	addSequential(new DriveStraightGyroVelocity(.4,60,false));
     	addSequential(new DriveTurnGyroInPlace(45,.6));	//angle, rate
     	addSequential(new DriveStraightGyroVelocity(-.4,71,false));
