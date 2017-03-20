@@ -73,23 +73,30 @@ public class Robot extends IterativeRobot {
     	oi =new OI();
     	
         chooser = new SendableChooser<Command>();
-        chooser.addDefault("Stand Still", new Stand());
-        chooser.addObject("Foward Drive", new ForwardDrive());
+        chooser.addDefault("1 Stand Still", new Stand());
+        chooser.addObject("1 Foward Drive", new ForwardDrive());
         
-        chooser.addObject("Center Gear *Sensors", new GearStraight_GyroEncoder());
-        chooser.addObject("Gear (turn left)  *Sensors", new GearTurnLeft_GyroEncoder());
-        chooser.addObject("Gear (turn right) *Sensors", new GearTurnRight_GyroEncoder());
-        chooser.addObject("Shoot Right *Sensors",new Shoot_Right_Encoder());
-        chooser.addObject("Shoot Left *Sensors",new Shoot_Left_Encoder());
-        chooser.addObject("Left Long Hopper *Sensors", new HopperLongLeft_GyroEncoder());
-        chooser.addObject("Right Long Hopper *Sensors", new HopperLongRight_Encoder());
-        chooser.addObject("Right Short Hopper *Sensors", new HopperShortRight_Encoder());
-        chooser.addObject("Left Short Hopper *Sensors", new HopperShortLeft_GyroEncoder());
+        chooser.addObject("2 Center Gear *Sensors", new GearStraight_GyroEncoder());
+        chooser.addObject("2 Gear (turn left)  *Sensors", new GearTurnLeft_GyroEncoder());
+        chooser.addObject("2 Gear (turn right) *Sensors", new GearTurnRight_GyroEncoder());
+		
+        chooser.addObject("3 Shoot Right *Sensors",new Shoot_Right_Encoder());
+        chooser.addObject("3 Shoot Left *Sensors",new Shoot_Left_Encoder());
+		
+        chooser.addObject("4 Left Long Hopper *Sensors", new HopperLongLeft_GyroEncoder());
+        chooser.addObject("4 Right Long Hopper *Sensors", new HopperLongRight_Encoder());
+        chooser.addObject("4 Right Short Hopper *Sensors", new HopperShortRight_Encoder());
+        chooser.addObject("4 Left Short Hopper *Sensors", new HopperShortLeft_GyroEncoder());
         ////////Untested Below//////////////////////////
-        chooser.addObject("Gear (turn right), goal *Sensors", new GearTurnRightGoal_GyroEncoder());
-        chooser.addObject("Gear (turn left), Right Hopper *Sensors", new GearLeftHopperRight_GyroEncoder());
-        chooser.addObject("Hopper left, Shoot *Sensors", new HopperShooterLeftHopper_GyroEncoder());
-        
+        chooser.addObject("5 Gear (turn right), left goal *Sensors", new GearTurnRightGoal_GyroEncoder());
+		chooser.addObject("5 Gear (turn left), right goal *Sensors", new GearTurnLeftGoal_GyroEncoder());
+		
+        chooser.addObject("6 Gear (turn left), Right Far Hopper *Sensors", new GearLeftHopperRight_GyroEncoder());
+		chooser.addObject("6 Gear (turn right), Left Far Hopper *Sensors", new GearRightHopperLeft_GyroEncoder());
+		
+        chooser.addObject("7 Hopper left, Shoot *Sensors", new HopperShooterLeftHopper_GyroEncoder());
+        chooser.addObject("7 Hopper right, Shoot *Sensors", new HopperShooterRightHopper_GyroEncoder());
+		
         SmartDashboard.putData("Auto mode Chooser", chooser);   
         
         
