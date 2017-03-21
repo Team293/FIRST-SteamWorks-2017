@@ -19,13 +19,16 @@ import org.usfirst.frc.team293.robot.subsystems.ContinuousFunctions;
 
 import autonomi.ForwardDrive;
 import autonomi.GearLeftHopperRight_GyroEncoder;
+import autonomi.GearRightHopperLeft_GyroEncoder;
 import autonomi.GearStraight_GyroEncoder;
+import autonomi.GearTurnLeftGoal_GyroEncoder;
 import autonomi.GearTurnLeft_GyroEncoder;
 import autonomi.GearTurnRightGoal_GyroEncoder;
 import autonomi.GearTurnRight_GyroEncoder;
 import autonomi.HopperLongLeft_GyroEncoder;
 import autonomi.HopperLongRight_Encoder;
 import autonomi.HopperShooterLeftHopper_GyroEncoder;
+import autonomi.HopperShooterRightHopper_GyroEncoder;
 import autonomi.HopperShortLeft_GyroEncoder;
 import autonomi.HopperShortRight_Encoder;
 import autonomi.Shoot_Left_Encoder;

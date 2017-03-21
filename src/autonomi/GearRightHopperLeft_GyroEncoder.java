@@ -1,20 +1,14 @@
 package autonomi;
 
-import org.usfirst.frc.team293.robot.commands.DriveStraightGyroEncoder;
-import org.usfirst.frc.team293.robot.commands.DriveStraightGyroVelocity;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class GearStraight_GyroEncoder extends CommandGroup {
-    //So this distance is 9.5 ft...but the robot is 36 inches so that makes the distance the front needs to go 6.5 ft
-    public  GearStraight_GyroEncoder() {
-    	//addSequential(new DriveStraightGyroEncoder(88,.5));	//real is 88 //actual 78
-        addSequential(new DriveStraightGyroVelocity(.4,80,false));
-    	//addSequential(new )
-    	// Add Commands here:
+public class GearRightHopperLeft_GyroEncoder extends CommandGroup {
+
+    public GearRightHopperLeft_GyroEncoder() {
+        // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
