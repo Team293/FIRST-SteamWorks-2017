@@ -17,8 +17,8 @@ public class HopperShortLeft_GyroEncoder extends CommandGroup {
 	approach the goal. This should be possible if our team mates don't do the same thing.*/
     public  HopperShortLeft_GyroEncoder() {
     	addParallel(new GearFlapDown());
-        addSequential(new DriveStraightGyroVelocity(.4,73,false));	//should be good
+        addSequential(new DriveStraightGyroVelocity(.4,75,false));	//should be good
     	addSequential(new DriveTurnGyroInPlace(90, 3));
-        addSequential(new DriveStraightGyroVelocity(.4,24,false));	//should be good    
+        addSequential(new DriveStraightGyroVelocity(.4,28,false));	//should be good    
     }
 }

@@ -17,15 +17,15 @@ public class HopperShooterRightHopper_GyroEncoder extends CommandGroup {
     public HopperShooterRightHopper_GyroEncoder() {
        	addSequential(new HopperShortRight_Encoder());
        	addParallel(new FeederFoward());
-    	addSequential(new AutoDelay(2.5));
-        addSequential(new DriveStraightGyroVelocity(-.4,-12,false));	//should be good         
-        addSequential(new DriveTurnGyroInPlace(90, 3));
+    	addSequential(new AutoDelay(3));
+        addSequential(new DriveStraightGyroVelocity(-.4,15,false));	//should be good         
+        addSequential(new DriveTurnGyroInPlace(90, .5));
         addSequential(new DriveStraightGyroVelocity(.4,10,false));
-        addSequential(new DriveStraightGyroVelocity(-.4,-70,false));	//should be good 
-    	addSequential(new DriveTurnGyroInPlace(45, 2.5));
+        addSequential(new DriveStraightGyroVelocity(-.4,75,false));	//should be good 
+    	addSequential(new DriveTurnGyroInPlace(40, .5));
     	addParallel(new GearFlapUp());
     	addParallel(new ShooterHighGoal());
     	addParallel(new FeederFoward());
-    	addSequential(new DriveStraightGyroVelocity(-.4,-5,false));
+    	addSequential(new DriveStraightGyroVelocity(-.4,10,false));
     }
 }

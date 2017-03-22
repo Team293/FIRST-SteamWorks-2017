@@ -144,7 +144,11 @@ public class Robot extends IterativeRobot {
     public void autonomousPeriodic() {		//Auto Mode
         Scheduler.getInstance().run();
     }
-
+    
+    public void autonomousDisabled(){
+    	Robot.shooter.Stop();
+    	Robot.feeder.stop();
+    }
     public void teleopInit() {
         if (autonomousCommand != null) autonomousCommand.cancel();	//Gets out of Auto
     	Robot.gearPouch.upFlap();

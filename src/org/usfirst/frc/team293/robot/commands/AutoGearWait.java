@@ -18,22 +18,22 @@ public class AutoGearWait extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	timer.reset();
+    	timer.stop();
+    	done=false;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	done=Robot.gearPouch.hasGear.get();
-    	if(timer.get()>5&&timer.get()<5.5&&Robot.gearPouch.hasGear.get()){
-    		Robot.driveTrain.tankdrive(-.5, -.5);
-    	}
-    	if(timer.get()>5.5&&timer.get()<6.25&&Robot.gearPouch.hasGear.get()){
-    		Robot.driveTrain.tankdrive(.5, .5);
-    	}
+    	
+    	if(!Robot.gearPouch.hasGear.get()){
+    		done=true;
+    		timer.start();
+    	}    
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !done;
+        return timer.get()>.25;
     }
 
     // Called once after isFinished returns true

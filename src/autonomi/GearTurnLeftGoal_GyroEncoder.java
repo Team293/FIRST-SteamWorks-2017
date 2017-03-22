@@ -1,7 +1,10 @@
 package autonomi;
 
+import org.usfirst.frc.team293.robot.commands.AutoDelay;
+import org.usfirst.frc.team293.robot.commands.AutoGearWait;
 import org.usfirst.frc.team293.robot.commands.DriveStraightGyroVelocity;
 import org.usfirst.frc.team293.robot.commands.DriveTurnGyroInPlace;
+import org.usfirst.frc.team293.robot.commands.FeederFoward;
 import org.usfirst.frc.team293.robot.commands.ShooterHighGoal;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -13,9 +16,11 @@ public class GearTurnLeftGoal_GyroEncoder extends CommandGroup {
 
     public GearTurnLeftGoal_GyroEncoder() {
     	addSequential(new GearTurnLeft_GyroEncoder());
-    	addSequential(new DriveStraightGyroVelocity(-.5,-10,false)); 
+    	addSequential(new AutoDelay(5));
+    	addSequential(new DriveStraightGyroVelocity(-.5,10,false)); 
     	addSequential(new DriveTurnGyroInPlace(-15,-.5));	
-    	addSequential(new DriveStraightGyroVelocity(-5,-120,false));
+    	addSequential(new DriveStraightGyroVelocity(-.5,120,false));
+    	addParallel(new FeederFoward());
     	addSequential(new ShooterHighGoal());
         // Add Commands here:
         // e.g. addSequential(new Command1());

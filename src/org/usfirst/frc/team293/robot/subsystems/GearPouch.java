@@ -38,7 +38,7 @@ public class GearPouch extends Subsystem {
     	OI.LEDFlaps.on();
     }
     public void downFlap() {
-    	gearServo1.set(.48);
+    	gearServo1.set(.53);
     	gearServo2.set(.28);
     	OI.LEDFlaps.off();
     }

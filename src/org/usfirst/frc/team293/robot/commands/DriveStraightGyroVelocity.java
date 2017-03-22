@@ -57,7 +57,7 @@ public class DriveStraightGyroVelocity extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {		//Finish this thing if its the last command and we went the distance, or if we are close up against the wall and the current spiked
-        return ((distance<=Robot.driveTrain.readEnc()[0] && !finalCommand)||(distance-Robot.driveTrain.readEnc()[0]<=10&&Robot.ContinuousFunctions.pdp.getTotalCurrent()>50));
+        return ((distance<=Robot.driveTrain.readEnc()[0] && !finalCommand));
     }
 
     // Called once after isFinished returns true
